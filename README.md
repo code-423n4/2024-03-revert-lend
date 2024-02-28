@@ -23,8 +23,9 @@ Automated findings output for the audit can be found [here](https://github.com/c
 
 _Note for C4 wardens: Anything included in this `Automated Findings / Publicly Known Issues` section is considered a publicly known issue and is ineligible for awards._
 
-[ ⭐️ SPONSORS: Are there any known issues or risks deemed acceptable that shouldn't lead to a valid finding? If so, list them here. ]
+Note from Revert:
 
+Liquidations of undercollateralized positions may be temporarly disabled when the pool price of a position is moved away too much from the oracle price. This issue is automatically resolved by arbitrage in most cases, but if there is not enough incentive to do so, the liquiditor has enough incentive to do the arbitrage as part of the liquidation process - because of the liquidation premium. For more details see Finding 4 in the audit by Hydn (see below).
 
 # Overview
 
@@ -75,21 +76,23 @@ Everything NOT in /src
 
 # Additional Context
 
-- [ ] Describe any novel or unique curve logic or mathematical models implemented in the contracts
-- [ ] Please list specific ERC20 that your protocol is anticipated to interact with. Could be "any" (literally anything, fee on transfer tokens, ERC777 tokens and so forth) or a list of tokens you envision using on launch.
-- [ ] Please list specific ERC721 that your protocol is anticipated to interact with.
-- [ ] Which blockchains will this code be deployed to, and are considered in scope for this audit?
-- [ ] Please list all trusted roles (e.g. operators, slashers, pausers, etc.), the privileges they hold, and any conditions under which privilege escalation is expected/allowable
-- [ ] In the event of a DOS, could you outline a minimum duration after which you would consider a finding to be valid? This question is asked in the context of most systems' capacity to handle DoS attacks gracefully for a certain period.
-- [ ] Is any part of your implementation intended to conform to any EIP's? If yes, please list the contracts in this format: 
-  - `Contract1`: Should comply with `ERC/EIPX`
-  - `Contract2`: Should comply with `ERC/EIPY`
+- Roles in the protocol: Owner (which will be set to a Multisig and Timelock), EmergencyAdmin (which will be set to a Multisig), Operators (which are EOA used by bots to call actions in Automator contracts)
+
+- Special ERC20 tokens like fee-on-transfer or rebasing tokens are not supported. Usage of them will revert.
+
+- The only allowed ERC721 are UniswapV3 positions.
+
+- The protocol should be able to be deployed on any EVM compatible chain - by using chain specific config values
+
+- `V3Vault`: Should comply with `ERC/EIP4626`
+
 
 ## Attack ideas (Where to look for bugs)
 - Reentrancy
 - Share calculation
 - Price manipulation
 - Crafted ERC-20 Tokens
+- Crafted external swap calldata
 
 ## Main invariants
 - Debt can never be bigger than lent assets (after all loans are payed back or liquidated).
@@ -115,7 +118,15 @@ Everything NOT in /src
 
 # Tests
 
-Because the v3-periphery library (Solidity v0.8 branch) in PoolAddress.sol has a different POOL_INIT_CODE_HASH than the one deployed on Mainnet this needs to be changed for the integration tests to work properly and for deployment!
+First time run 
+
+```sh
+forge install
+```
+
+to get dependencies. Then:
+
+Because the v3-periphery library (Solidity v0.8 branch) in lib/v3-periphery/contracts/libraries/PoolAddress.sol has a different POOL_INIT_CODE_HASH than the one deployed on Mainnet this needs to be changed for the integration tests to work properly and for deployment!
 
 bytes32 internal constant POOL_INIT_CODE_HASH = 0xa598dd2fba360510c5a8f02f44423a4468e902df5857dbce3ca162a43a3a31ff;
 
