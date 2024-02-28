@@ -28,7 +28,11 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 
 # Overview
 
-[ ⭐️ SPONSORS: add info here ]
+This repository contains the smart contracts for Revert Lend protocol.
+
+It uses Foundry as development toolchain.
+
+To get an understanding of the basic concepts, and advanced topics like transformers please read the whitepaper.
 
 ## Links
 
@@ -65,7 +69,6 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 | [src/utils/Swapper.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/utils/Swapper.sol) | 118 | Base class which adds logic for doing swaps with UniversalRouter, 0x Router and pool swaps. | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) |
 
 
-
 ## Out of scope
 
 Everything NOT in /src
@@ -83,10 +86,13 @@ Everything NOT in /src
   - `Contract2`: Should comply with `ERC/EIPY`
 
 ## Attack ideas (Where to look for bugs)
-*List specific areas to address - see [this blog post](https://medium.com/code4rena/the-security-council-elections-within-the-arbitrum-dao-a-comprehensive-guide-aa6d001aae60#9adb) for an example*
+- Reentrancy
+- Share calculation
+- Price manipulation
+- Crafted ERC-20 Tokens
 
 ## Main invariants
-*Describe the project's main invariants (properties that should NEVER EVER be broken).*
+- Debt can never be bigger than lent assets (after all loans are payed back or liquidated).
 
 ## Scoping Details 
 ```
@@ -95,25 +101,34 @@ Everything NOT in /src
 - Total SLoC for these contracts?: 3000  
 - How many external imports are there?: 10  
 - How many separate interfaces and struct definitions are there for the contracts within scope?: 4  
-- Does most of your code generally use composition or inheritance?: Composition   
+- Does most of your code generally use composition or inheritance?: both   
 - How many external calls?: 10   
 - What is the overall line coverage percentage provided by your tests?: 80
-- Is this an upgrade of an existing system?:
+- Is this an upgrade of an existing system?: No
 - Check all that apply (e.g. timelock, NFT, AMM, ERC20, rollups, etc.): NFT, AMM, ERC-20 Token  
-- Is there a need to understand a separate part of the codebase / get context in order to audit this part of the protocol?: False  
-- Please describe required context:   
+- Is there a need to understand a separate part of the codebase / get context in order to audit this part of the protocol?: UniswapV3, Permit2  
 - Does it use an oracle?: Chainlink, Uniswap V3 TWAP
 - Describe any novel or unique curve logic or mathematical models your code uses: No 
 - Is this either a fork of or an alternate implementation of another project?: False  
-- Does it use a side-chain?:
-- Describe any specific areas you would like addressed:
+- Does it use a side-chain?: No
 ```
 
 # Tests
 
-*Provide every step required to build the project from a fresh git clone, as well as steps to run the tests with a gas report.* 
+Because the v3-periphery library (Solidity v0.8 branch) in PoolAddress.sol has a different POOL_INIT_CODE_HASH than the one deployed on Mainnet this needs to be changed for the integration tests to work properly and for deployment!
 
-*Note: Many wardens run Slither as a first pass for testing.  Please document any known errors with no workaround.* 
+bytes32 internal constant POOL_INIT_CODE_HASH = 0xa598dd2fba360510c5a8f02f44423a4468e902df5857dbce3ca162a43a3a31ff;
+
+needs to be changed to 
+
+bytes32 internal constant POOL_INIT_CODE_HASH = 0xe34f199b19b2b4f47f68442619d555527d244f78a3297ea89325f843f87b8b54;
+
+Most tests use a forked state of Ethereum Mainnet. You can run all tests with: 
+
+```sh
+forge test
+```
+
 
 ## Miscellaneous
 
