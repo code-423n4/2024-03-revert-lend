@@ -3,7 +3,6 @@ pragma solidity ^0.8.0;
 
 import "v3-core/interfaces/IUniswapV3Factory.sol";
 import "v3-core/interfaces/IUniswapV3Pool.sol";
-import "v3-core/libraries/FullMath.sol";
 import "v3-core/libraries/TickMath.sol";
 import "v3-core/libraries/FixedPoint128.sol";
 

@@ -25,7 +25,7 @@ _Note for C4 wardens: Anything included in this `Automated Findings / Publicly K
 
 Note from Revert:
 
-Liquidations of undercollateralized positions may be temporarly disabled when the pool price of a position is moved away too much from the oracle price. This issue is automatically resolved by arbitrage in most cases, but if there is not enough incentive to do so, the liquiditor has enough incentive to do the arbitrage as part of the liquidation process - because of the liquidation premium. For more details see Finding 4 in the audit by Hydn (see below).
+Liquidations of undercollateralized positions may be temporarily disabled when the pool price of a position is moved away too much from the oracle price. This issue is automatically resolved by arbitrage in most cases, but if there is not enough incentive to do so, the liquidator has enough incentive to do the arbitrage as part of the liquidation process - because of the liquidation premium. For more details see Finding 4 in the audit by Hydn (see below).
 
 # Overview
 
@@ -55,6 +55,8 @@ To get an understanding of the basic concepts, and advanced topics like transfor
 
 # Scope
 
+*See [scope.txt](https://github.com/code-423n4/2024-03-revert-lend/blob/main/scope.txt)*
+
 | Contract | SLOC | Purpose | Libraries used |  
 | ----------- | ----------- | ----------- | ----------- |
 | [src/V3Vault.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/V3Vault.sol) | 887 | Vault contract which keeps V3 Positions, lent assets and handles loans. | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) [`@permit2`](https://github.com/uniswap/permit2) |
@@ -64,7 +66,7 @@ To get an understanding of the basic concepts, and advanced topics like transfor
 | [src/automators/Automator.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/automators/Automator.sol) | 181 | Base class which adds handling of operator, fees and permissions for automator contracts. | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) |
 | [src/transformers/AutoCompound.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/transformers/AutoCompound.sol) | 200 | Lets Revert controlled bot auto-compound positions (also when they are used as collateral) | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) |
 | [src/transformers/AutoRange.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/transformers/AutoRange.sol) | 235 | Lets Revert controlled bot auto-range positions (also when they are used as collateral) | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) |
-| [src/transformers/LeverageTransformer.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/transformers/LeverageTransformer.sol) | 133 | Lets positions being leveraged by borrowing, swapping and readding to collateralized position atomically. Also supports deleveraging. | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) |
+| [src/transformers/LeverageTransformer.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/transformers/LeverageTransformer.sol) | 133 | Lets positions being leveraged by borrowing, swapping and reading to collateralized position atomically. Also supports deleveraging. | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) |
 | [src/transformers/V3Utils.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/transformers/V3Utils.sol) | 750 | V3Utils contract (atomic swap and manage liquidity functions) which works with V3Vault and supports Permit2. | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) [`@permit2`](https://github.com/uniswap/permit2) |
 | [src/utils/FlashloanLiquidator.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/utils/FlashloanLiquidator.sol) | 89 | Util contract to do atomic liquidations using a Uniswap V3 Flashloan | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) |
 | [src/utils/Swapper.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/utils/Swapper.sol) | 118 | Base class which adds logic for doing swaps with UniversalRouter, 0x Router and pool swaps. | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) |
@@ -72,7 +74,7 @@ To get an understanding of the basic concepts, and advanced topics like transfor
 
 ## Out of scope
 
-Everything NOT in /src
+Everything NOT in /src and NOT in [scope.txt](https://github.com/code-423n4/2024-03-revert-lend/blob/main/scope.txt)
 
 # Additional Context
 
@@ -126,13 +128,17 @@ forge install
 
 to get dependencies. Then:
 
-Because the v3-periphery library (Solidity v0.8 branch) in lib/v3-periphery/contracts/libraries/PoolAddress.sol has a different POOL_INIT_CODE_HASH than the one deployed on Mainnet this needs to be changed for the integration tests to work properly and for deployment!
+Because the v3-periphery library (Solidity v0.8 branch) in `lib/v3-periphery/contracts/libraries/PoolAddress.sol` has a different `POOL_INIT_CODE_HASH` than the one deployed on Mainnet this needs to be changed for the integration tests to work properly and for deployment!
 
+```solidity
 bytes32 internal constant POOL_INIT_CODE_HASH = 0xa598dd2fba360510c5a8f02f44423a4468e902df5857dbce3ca162a43a3a31ff;
+```
 
 needs to be changed to 
 
+```solidity
 bytes32 internal constant POOL_INIT_CODE_HASH = 0xe34f199b19b2b4f47f68442619d555527d244f78a3297ea89325f843f87b8b54;
+```
 
 Most tests use a forked state of Ethereum Mainnet. You can run all tests with: 
 
@@ -140,6 +146,11 @@ Most tests use a forked state of Ethereum Mainnet. You can run all tests with:
 forge test
 ```
 
+If the `https://rpc.ankr.com/eth` or `https://rpc.ankr.com/polygon` fork urls aren't working, please replace their instances with your own rpc urls (from the likes of Alchemy or Infura).
+
+## Slither
+
+See [slither.txt](https://github.com/code-423n4/2024-03-revert-lend/blob/main/slither.txt) or run with `slither .`
 
 ## Miscellaneous
 

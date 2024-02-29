@@ -1,0 +1,413 @@
+INFO:Detectors:
+Automator._transferToken(address,IERC20,uint256,bool) (src/automators/Automator.sol#218-228) sends eth to arbitrary user
+	Dangerous calls:
+	- (sent) = to.call{value: amount}() (src/automators/Automator.sol#221)
+V3Utils._transferToken(address,IERC20,uint256,bool) (src/transformers/V3Utils.sol#864-874) sends eth to arbitrary user
+	Dangerous calls:
+	- (sent) = to.call{value: amount}() (src/transformers/V3Utils.sol#867)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#functions-that-send-ether-to-arbitrary-destinations
+INFO:Detectors:
+V3Oracle.getValue(uint256,address) (src/V3Oracle.sol#95-131) performs a multiplication on the result of a division:
+	- price0X96 = price0X96 * Q96 / priceTokenX96 (src/V3Oracle.sol#122)
+	- derivedPoolPriceX96 = price0X96 * Q96 / price1X96 (src/V3Oracle.sol#129)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#divide-before-multiply
+INFO:Detectors:
+AutoCompound._checkApprovals(address,address) (src/transformers/AutoCompound.sol#276-286) uses a dangerous strict equality:
+	- allowance0 == 0 (src/transformers/AutoCompound.sol#279)
+AutoCompound._checkApprovals(address,address) (src/transformers/AutoCompound.sol#276-286) uses a dangerous strict equality:
+	- allowance1 == 0 (src/transformers/AutoCompound.sol#283)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dangerous-strict-equalities
+INFO:Detectors:
+Reentrancy in V3Vault._repay(uint256,uint256,bool,bytes) (src/V3Vault.sol#954-1014):
+	External calls:
+	- permit2.permitTransferFrom(permit,ISignatureTransfer.SignatureTransferDetails(address(this),assets),msg.sender,signature) (src/V3Vault.sol#981-983)
+	- SafeERC20.safeTransferFrom(IERC20(asset),msg.sender,address(this),assets) (src/V3Vault.sol#986)
+	State variables written after the call(s):
+	- debtSharesTotal -= shares (src/V3Vault.sol#992)
+	V3Vault.debtSharesTotal (src/V3Vault.sol#124) can be used in cross function reentrancies:
+	- V3Vault._calculateGlobalInterest() (src/V3Vault.sol#1167-1195)
+	- V3Vault._getAvailableBalance(uint256,uint256) (src/V3Vault.sol#1017-1029)
+	- V3Vault._repay(uint256,uint256,bool,bytes) (src/V3Vault.sol#954-1014)
+	- V3Vault.borrow(uint256,uint256) (src/V3Vault.sol#550-602)
+	- V3Vault.debtSharesTotal (src/V3Vault.sol#124)
+	- V3Vault.liquidate(IVault.LiquidateParams) (src/V3Vault.sol#685-757)
+	- V3Vault.vaultInfo() (src/V3Vault.sol#195-214)
+	- loan.debtShares = loanDebtShares (src/V3Vault.sol#991)
+	V3Vault.loans (src/V3Vault.sol#154) can be used in cross function reentrancies:
+	- V3Vault._cleanupLoan(uint256,uint256,uint256,address) (src/V3Vault.sol#1077-1085)
+	- V3Vault._repay(uint256,uint256,bool,bytes) (src/V3Vault.sol#954-1014)
+	- V3Vault.borrow(uint256,uint256) (src/V3Vault.sol#550-602)
+	- V3Vault.decreaseLiquidityAndCollect(IVault.DecreaseLiquidityAndCollectParams) (src/V3Vault.sol#609-646)
+	- V3Vault.liquidate(IVault.LiquidateParams) (src/V3Vault.sol#685-757)
+	- V3Vault.loanInfo(uint256) (src/V3Vault.sol#231-253)
+	- V3Vault.loans (src/V3Vault.sol#154)
+	- V3Vault.onERC721Received(address,address,uint256,bytes) (src/V3Vault.sol#429-477)
+	- V3Vault.transform(uint256,address,bytes) (src/V3Vault.sol#497-545)
+Reentrancy in V3Vault._repay(uint256,uint256,bool,bytes) (src/V3Vault.sol#954-1014):
+	External calls:
+	- permit2.permitTransferFrom(permit,ISignatureTransfer.SignatureTransferDetails(address(this),assets),msg.sender,signature) (src/V3Vault.sol#981-983)
+	- SafeERC20.safeTransferFrom(IERC20(asset),msg.sender,address(this),assets) (src/V3Vault.sol#986)
+	- _cleanupLoan(tokenId,newDebtExchangeRateX96,newLendExchangeRateX96,owner) (src/V3Vault.sol#1005)
+		- nonfungiblePositionManager.safeTransferFrom(address(this),owner,tokenId) (src/V3Vault.sol#1083)
+	State variables written after the call(s):
+	- _cleanupLoan(tokenId,newDebtExchangeRateX96,newLendExchangeRateX96,owner) (src/V3Vault.sol#1005)
+		- delete loans[tokenId] (src/V3Vault.sol#1082)
+	V3Vault.loans (src/V3Vault.sol#154) can be used in cross function reentrancies:
+	- V3Vault._cleanupLoan(uint256,uint256,uint256,address) (src/V3Vault.sol#1077-1085)
+	- V3Vault._repay(uint256,uint256,bool,bytes) (src/V3Vault.sol#954-1014)
+	- V3Vault.borrow(uint256,uint256) (src/V3Vault.sol#550-602)
+	- V3Vault.decreaseLiquidityAndCollect(IVault.DecreaseLiquidityAndCollectParams) (src/V3Vault.sol#609-646)
+	- V3Vault.liquidate(IVault.LiquidateParams) (src/V3Vault.sol#685-757)
+	- V3Vault.loanInfo(uint256) (src/V3Vault.sol#231-253)
+	- V3Vault.loans (src/V3Vault.sol#154)
+	- V3Vault.onERC721Received(address,address,uint256,bytes) (src/V3Vault.sol#429-477)
+	- V3Vault.transform(uint256,address,bytes) (src/V3Vault.sol#497-545)
+Reentrancy in V3Vault.liquidate(IVault.LiquidateParams) (src/V3Vault.sol#685-757):
+	External calls:
+	- permit2.permitTransferFrom(permit,ISignatureTransfer.SignatureTransferDetails(address(this),state.liquidatorCost),msg.sender,signature) (src/V3Vault.sol#720-725)
+	- SafeERC20.safeTransferFrom(IERC20(asset),msg.sender,address(this),state.liquidatorCost) (src/V3Vault.sol#728)
+	State variables written after the call(s):
+	- debtSharesTotal -= debtShares (src/V3Vault.sol#731)
+	V3Vault.debtSharesTotal (src/V3Vault.sol#124) can be used in cross function reentrancies:
+	- V3Vault._calculateGlobalInterest() (src/V3Vault.sol#1167-1195)
+	- V3Vault._getAvailableBalance(uint256,uint256) (src/V3Vault.sol#1017-1029)
+	- V3Vault._repay(uint256,uint256,bool,bytes) (src/V3Vault.sol#954-1014)
+	- V3Vault.borrow(uint256,uint256) (src/V3Vault.sol#550-602)
+	- V3Vault.debtSharesTotal (src/V3Vault.sol#124)
+	- V3Vault.liquidate(IVault.LiquidateParams) (src/V3Vault.sol#685-757)
+	- V3Vault.vaultInfo() (src/V3Vault.sol#195-214)
+Reentrancy in V3Vault.liquidate(IVault.LiquidateParams) (src/V3Vault.sol#685-757):
+	External calls:
+	- permit2.permitTransferFrom(permit,ISignatureTransfer.SignatureTransferDetails(address(this),state.liquidatorCost),msg.sender,signature) (src/V3Vault.sol#720-725)
+	- SafeERC20.safeTransferFrom(IERC20(asset),msg.sender,address(this),state.liquidatorCost) (src/V3Vault.sol#728)
+	- (amount0,amount1) = _sendPositionValue(params.tokenId,state.liquidationValue,state.fullValue,state.feeValue,msg.sender) (src/V3Vault.sol#734-735)
+		- nonfungiblePositionManager.decreaseLiquidity(INonfungiblePositionManager.DecreaseLiquidityParams(tokenId,liquidity,0,0,block.timestamp)) (src/V3Vault.sol#1065-1067)
+		- (amount0,amount1) = nonfungiblePositionManager.collect(INonfungiblePositionManager.CollectParams(tokenId,recipient,fees0,fees1)) (src/V3Vault.sol#1070-1072)
+	- _cleanupLoan(params.tokenId,state.newDebtExchangeRateX96,state.newLendExchangeRateX96,owner) (src/V3Vault.sol#744)
+		- nonfungiblePositionManager.safeTransferFrom(address(this),owner,tokenId) (src/V3Vault.sol#1083)
+	State variables written after the call(s):
+	- _cleanupLoan(params.tokenId,state.newDebtExchangeRateX96,state.newLendExchangeRateX96,owner) (src/V3Vault.sol#744)
+		- delete loans[tokenId] (src/V3Vault.sol#1082)
+	V3Vault.loans (src/V3Vault.sol#154) can be used in cross function reentrancies:
+	- V3Vault._cleanupLoan(uint256,uint256,uint256,address) (src/V3Vault.sol#1077-1085)
+	- V3Vault._repay(uint256,uint256,bool,bytes) (src/V3Vault.sol#954-1014)
+	- V3Vault.borrow(uint256,uint256) (src/V3Vault.sol#550-602)
+	- V3Vault.decreaseLiquidityAndCollect(IVault.DecreaseLiquidityAndCollectParams) (src/V3Vault.sol#609-646)
+	- V3Vault.liquidate(IVault.LiquidateParams) (src/V3Vault.sol#685-757)
+	- V3Vault.loanInfo(uint256) (src/V3Vault.sol#231-253)
+	- V3Vault.loans (src/V3Vault.sol#154)
+	- V3Vault.onERC721Received(address,address,uint256,bytes) (src/V3Vault.sol#429-477)
+	- V3Vault.transform(uint256,address,bytes) (src/V3Vault.sol#497-545)
+	- _cleanupLoan(params.tokenId,state.newDebtExchangeRateX96,state.newLendExchangeRateX96,owner) (src/V3Vault.sol#744)
+		- tokenConfigs[token0].totalDebtShares -= SafeCast.toUint192(oldShares - newShares) (src/V3Vault.sol#1217)
+		- tokenConfigs[token1].totalDebtShares -= SafeCast.toUint192(oldShares - newShares) (src/V3Vault.sol#1218)
+		- tokenConfigs[token0].totalDebtShares += SafeCast.toUint192(newShares - oldShares) (src/V3Vault.sol#1220)
+		- tokenConfigs[token1].totalDebtShares += SafeCast.toUint192(newShares - oldShares) (src/V3Vault.sol#1221)
+	V3Vault.tokenConfigs (src/V3Vault.sol#115) can be used in cross function reentrancies:
+	- V3Vault._calculateTokenCollateralFactorX32(uint256) (src/V3Vault.sol#1143-1148)
+	- V3Vault._updateAndCheckCollateral(uint256,uint256,uint256,uint256,uint256) (src/V3Vault.sol#1205-1244)
+	- V3Vault.setTokenConfig(address,uint32,uint32) (src/V3Vault.sol#856-866)
+	- V3Vault.tokenConfigs (src/V3Vault.sol#115)
+Reentrancy in V3Vault.onERC721Received(address,address,uint256,bytes) (src/V3Vault.sol#429-477):
+	External calls:
+	- _cleanupLoan(oldTokenId,debtExchangeRateX96,lendExchangeRateX96,owner_scope_0) (src/V3Vault.sol#467)
+		- nonfungiblePositionManager.safeTransferFrom(address(this),owner,tokenId) (src/V3Vault.sol#1083)
+	State variables written after the call(s):
+	- _updateAndCheckCollateral(tokenId,debtExchangeRateX96,lendExchangeRateX96,0,loans[tokenId].debtShares) (src/V3Vault.sol#470-472)
+		- tokenConfigs[token0].totalDebtShares -= SafeCast.toUint192(oldShares - newShares) (src/V3Vault.sol#1217)
+		- tokenConfigs[token1].totalDebtShares -= SafeCast.toUint192(oldShares - newShares) (src/V3Vault.sol#1218)
+		- tokenConfigs[token0].totalDebtShares += SafeCast.toUint192(newShares - oldShares) (src/V3Vault.sol#1220)
+		- tokenConfigs[token1].totalDebtShares += SafeCast.toUint192(newShares - oldShares) (src/V3Vault.sol#1221)
+	V3Vault.tokenConfigs (src/V3Vault.sol#115) can be used in cross function reentrancies:
+	- V3Vault._calculateTokenCollateralFactorX32(uint256) (src/V3Vault.sol#1143-1148)
+	- V3Vault._updateAndCheckCollateral(uint256,uint256,uint256,uint256,uint256) (src/V3Vault.sol#1205-1244)
+	- V3Vault.setTokenConfig(address,uint32,uint32) (src/V3Vault.sol#856-866)
+	- V3Vault.tokenConfigs (src/V3Vault.sol#115)
+Reentrancy in V3Vault.transform(uint256,address,bytes) (src/V3Vault.sol#497-545):
+	External calls:
+	- nonfungiblePositionManager.approve(transformer,tokenId) (src/V3Vault.sol#520)
+	- (success) = transformer.call(data) (src/V3Vault.sol#522)
+	- nonfungiblePositionManager.approve(address(0),tokenId) (src/V3Vault.sol#537)
+	State variables written after the call(s):
+	- transformedTokenId = 0 (src/V3Vault.sol#542)
+	V3Vault.transformedTokenId (src/V3Vault.sol#161) can be used in cross function reentrancies:
+	- V3Vault.borrow(uint256,uint256) (src/V3Vault.sol#550-602)
+	- V3Vault.decreaseLiquidityAndCollect(IVault.DecreaseLiquidityAndCollectParams) (src/V3Vault.sol#609-646)
+	- V3Vault.liquidate(IVault.LiquidateParams) (src/V3Vault.sol#685-757)
+	- V3Vault.onERC721Received(address,address,uint256,bytes) (src/V3Vault.sol#429-477)
+	- V3Vault.transform(uint256,address,bytes) (src/V3Vault.sol#497-545)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+INFO:Detectors:
+V3Utils.execute(uint256,V3Utils.Instructions).amount0 (src/transformers/V3Utils.sol#118) is a local variable never initialized
+V3Utils._prepareAddPermit2(IERC20,IERC20,IERC20,uint256,uint256,uint256,ISignatureTransfer.PermitBatchTransferFrom,bytes).state (src/transformers/V3Utils.sol#608) is a local variable never initialized
+V3Utils.execute(uint256,V3Utils.Instructions).targetAmount (src/transformers/V3Utils.sol#305) is a local variable never initialized
+V3Oracle.getValue(uint256,address).cachedChainlinkReferencePriceX96 (src/V3Oracle.sol#104) is a local variable never initialized
+V3Utils._prepareAdd(IERC20,IERC20,IERC20,uint256,uint256,uint256).amountAdded0 (src/transformers/V3Utils.sol#661) is a local variable never initialized
+AutoCompound.execute(AutoCompound.ExecuteParams).state (src/transformers/AutoCompound.sol#105) is a local variable never initialized
+AutoRange.execute(AutoRange.ExecuteParams).state (src/transformers/AutoRange.sol#115) is a local variable never initialized
+Automator.withdrawBalances(address[],address).i (src/automators/Automator.sol#109) is a local variable never initialized
+AutoExit.execute(AutoExit.ExecuteParams).state (src/automators/AutoExit.sol#105) is a local variable never initialized
+V3Oracle._getReferenceTokenPriceX96(address,uint256).verifyPriceX96 (src/V3Oracle.sol#287) is a local variable never initialized
+V3Utils.execute(uint256,V3Utils.Instructions).amount1 (src/transformers/V3Utils.sol#119) is a local variable never initialized
+AutoCompound.withdrawBalances(address[],address).i (src/transformers/AutoCompound.sol#231) is a local variable never initialized
+V3Utils._prepareAdd(IERC20,IERC20,IERC20,uint256,uint256,uint256).amountAdded1 (src/transformers/V3Utils.sol#662) is a local variable never initialized
+V3Vault.liquidate(IVault.LiquidateParams).state (src/V3Vault.sol#691) is a local variable never initialized
+V3Utils._prepareAdd(IERC20,IERC20,IERC20,uint256,uint256,uint256).amountAddedOther (src/transformers/V3Utils.sol#663) is a local variable never initialized
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#uninitialized-local-variables
+INFO:Detectors:
+V3Oracle._getChainlinkPriceX96(address) (src/V3Oracle.sol#329-343) ignores return value by (answer,updatedAt) = feedConfig.feed.latestRoundData() (src/V3Oracle.sol#337)
+V3Oracle._getReferencePoolPriceX96(IUniswapV3Pool,uint32) (src/V3Oracle.sol#359-374) ignores return value by (sqrtPriceX96,None,None,None,None,None,None) = pool.slot0() (src/V3Oracle.sol#363)
+V3Oracle._getReferencePoolPriceX96(IUniswapV3Pool,uint32) (src/V3Oracle.sol#359-374) ignores return value by (tickCumulatives) = pool.observe(secondsAgos) (src/V3Oracle.sol#368)
+V3Oracle._initializeState(uint256) (src/V3Oracle.sol#395-423) ignores return value by (token0,token1,fee,tickLower,tickUpper,liquidity,feeGrowthInside0LastX128,feeGrowthInside1LastX128,tokensOwed0,tokensOwed1) = nonfungiblePositionManager.positions(tokenId) (src/V3Oracle.sol#396-409)
+V3Oracle._initializeState(uint256) (src/V3Oracle.sol#395-423) ignores return value by (state.sqrtPriceX96,state.tick,None,None,None,None,None) = state.pool.slot0() (src/V3Oracle.sol#422)
+V3Oracle._getFeeGrowthInside(IUniswapV3Pool,int24,int24,int24,uint256,uint256) (src/V3Oracle.sol#472-496) ignores return value by (lowerFeeGrowthOutside0X128,lowerFeeGrowthOutside1X128) = pool.ticks(tickLower) (src/V3Oracle.sol#480)
+V3Oracle._getFeeGrowthInside(IUniswapV3Pool,int24,int24,int24,uint256,uint256) (src/V3Oracle.sol#472-496) ignores return value by (upperFeeGrowthOutside0X128,upperFeeGrowthOutside1X128) = pool.ticks(tickUpper) (src/V3Oracle.sol#481)
+V3Vault._sendPositionValue(uint256,uint256,uint256,uint256,address) (src/V3Vault.sol#1032-1073) ignores return value by (None,None,None,None,None,None,None,liquidity,None,None,None,None) = nonfungiblePositionManager.positions(tokenId) (src/V3Vault.sol#1045)
+V3Vault._sendPositionValue(uint256,uint256,uint256,uint256,address) (src/V3Vault.sol#1032-1073) ignores return value by (None,None,None,liquidity,None,None,fees0,fees1) = oracle.getPositionBreakdown(tokenId) (src/V3Vault.sol#1049)
+V3Vault._sendPositionValue(uint256,uint256,uint256,uint256,address) (src/V3Vault.sol#1032-1073) ignores return value by nonfungiblePositionManager.decreaseLiquidity(INonfungiblePositionManager.DecreaseLiquidityParams(tokenId,liquidity,0,0,block.timestamp)) (src/V3Vault.sol#1065-1067)
+V3Vault._calculateTokenCollateralFactorX32(uint256) (src/V3Vault.sol#1143-1148) ignores return value by (token0,token1) = nonfungiblePositionManager.positions(tokenId) (src/V3Vault.sol#1144)
+V3Vault._updateAndCheckCollateral(uint256,uint256,uint256,uint256,uint256) (src/V3Vault.sol#1205-1244) ignores return value by (token0,token1) = nonfungiblePositionManager.positions(tokenId) (src/V3Vault.sol#1213)
+V3Vault._checkLoanIsHealthy(uint256,uint256) (src/V3Vault.sol#1270-1279) ignores return value by (fullValue,feeValue,None,None) = oracle.getValue(tokenId,address(asset)) (src/V3Vault.sol#1275)
+Automator._validateSwap(bool,uint256,IUniswapV3Pool,uint32,uint16,uint64) (src/automators/Automator.sol#139-162) ignores return value by (sqrtPriceX96,currentTick,None,None,None,None,None) = pool.slot0() (src/automators/Automator.sol#148)
+Automator._getTWAPTick(IUniswapV3Pool,uint32) (src/automators/Automator.sol#180-191) ignores return value by (tickCumulatives) = pool.observe(secondsAgos) (src/automators/Automator.sol#186-190)
+AutoExit.execute(AutoExit.ExecuteParams) (src/automators/AutoExit.sol#100-214) ignores return value by (None,None,state.token0,state.token1,state.fee,state.tickLower,state.tickUpper,state.liquidity,None,None,None,None) = nonfungiblePositionManager.positions(params.tokenId) (src/automators/AutoExit.sol#120-121)
+AutoExit.execute(AutoExit.ExecuteParams) (src/automators/AutoExit.sol#100-214) ignores return value by (None,state.tick,None,None,None,None,None) = state.pool.slot0() (src/automators/AutoExit.sol#132)
+AutoCompound.executeWithVault(AutoCompound.ExecuteParams,address) (src/transformers/AutoCompound.sol#87-94) ignores return value by IVault(vault).transform(params.tokenId,address(this),abi.encodeWithSelector(AutoCompound.execute.selector,params)) (src/transformers/AutoCompound.sol#91-93)
+AutoCompound.execute(AutoCompound.ExecuteParams) (src/transformers/AutoCompound.sol#101-193) ignores return value by (None,None,state.token0,state.token1,state.fee,state.tickLower,state.tickUpper,None,None,None,None,None) = nonfungiblePositionManager.positions(params.tokenId) (src/transformers/AutoCompound.sol#115-116)
+AutoCompound.execute(AutoCompound.ExecuteParams) (src/transformers/AutoCompound.sol#101-193) ignores return value by (state.sqrtPriceX96,state.tick,None,None,None,None,None) = pool.slot0() (src/transformers/AutoCompound.sol#129)
+AutoCompound.execute(AutoCompound.ExecuteParams) (src/transformers/AutoCompound.sol#101-193) ignores return value by (None,state.compounded0,state.compounded1) = nonfungiblePositionManager.increaseLiquidity(INonfungiblePositionManager.IncreaseLiquidityParams(params.tokenId,state.maxAddAmount0,state.maxAddAmount1,0,0,block.timestamp)) (src/transformers/AutoCompound.sol#163-167)
+AutoCompound.withdrawLeftoverBalances(uint256,address) (src/transformers/AutoCompound.sol#200-219) ignores return value by (token0,token1) = nonfungiblePositionManager.positions(tokenId) (src/transformers/AutoCompound.sol#209)
+AutoRange.executeWithVault(AutoRange.ExecuteParams,address) (src/transformers/AutoRange.sol#97-104) ignores return value by IVault(vault).transform(params.tokenId,address(this),abi.encodeWithSelector(AutoRange.execute.selector,params)) (src/transformers/AutoRange.sol#101-103)
+AutoRange.execute(AutoRange.ExecuteParams) (src/transformers/AutoRange.sol#111-272) ignores return value by (None,None,state.token0,state.token1,state.fee,state.tickLower,state.tickUpper,state.liquidity,None,None,None,None) = nonfungiblePositionManager.positions(params.tokenId) (src/transformers/AutoRange.sol#130-131)
+AutoRange.execute(AutoRange.ExecuteParams) (src/transformers/AutoRange.sol#111-272) ignores return value by (state.newTokenId,None,state.amountAdded0,state.amountAdded1) = nonfungiblePositionManager.mint(mintParams) (src/transformers/AutoRange.sol#217)
+LeverageTransformer.leverageUp(LeverageTransformer.LeverageUpParams) (src/transformers/LeverageTransformer.sol#40-96) ignores return value by (token0,token1) = nonfungiblePositionManager.positions(params.tokenId) (src/transformers/LeverageTransformer.sol#47)
+LeverageTransformer.leverageUp(LeverageTransformer.LeverageUpParams) (src/transformers/LeverageTransformer.sol#40-96) ignores return value by (added0,added1) = nonfungiblePositionManager.increaseLiquidity(increaseLiquidityParams) (src/transformers/LeverageTransformer.sol#84)
+LeverageTransformer.leverageDown(LeverageTransformer.LeverageDownParams) (src/transformers/LeverageTransformer.sol#123-175) ignores return value by (token0,token1) = nonfungiblePositionManager.positions(params.tokenId) (src/transformers/LeverageTransformer.sol#125)
+V3Utils.execute(uint256,V3Utils.Instructions) (src/transformers/V3Utils.sol#115-352) ignores return value by (token0,token1,liquidity) = nonfungiblePositionManager.positions(tokenId) (src/transformers/V3Utils.sol#116)
+V3Utils.swapAndIncreaseLiquidity(V3Utils.SwapAndIncreaseLiquidityParams) (src/transformers/V3Utils.sol#532-564) ignores return value by (token0,token1) = nonfungiblePositionManager.positions(params.tokenId) (src/transformers/V3Utils.sol#537)
+FlashloanLiquidator.liquidate(FlashloanLiquidator.LiquidateParams) (src/utils/FlashloanLiquidator.sol#41-65) ignores return value by (liquidationCost) = params.vault.loanInfo(params.tokenId) (src/utils/FlashloanLiquidator.sol#42)
+FlashloanLiquidator.liquidate(FlashloanLiquidator.LiquidateParams) (src/utils/FlashloanLiquidator.sol#41-65) ignores return value by (token0,token1) = nonfungiblePositionManager.positions(params.tokenId) (src/utils/FlashloanLiquidator.sol#47)
+FlashloanLiquidator.uniswapV3FlashCallback(uint256,uint256,bytes) (src/utils/FlashloanLiquidator.sol#67-109) ignores return value by data.vault.liquidate(IVault.LiquidateParams(data.tokenId,data.debtShares,data.swap0.amountIn,data.swap1.amountIn,address(this),)) (src/utils/FlashloanLiquidator.sol#73-77)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#unused-return
+INFO:Detectors:
+V3Oracle.constructor(INonfungiblePositionManager,address,address)._referenceToken (src/V3Oracle.sol#76) lacks a zero-check on :
+		- referenceToken = _referenceToken (src/V3Oracle.sol#81)
+V3Oracle.constructor(INonfungiblePositionManager,address,address)._chainlinkReferenceToken (src/V3Oracle.sol#77) lacks a zero-check on :
+		- chainlinkReferenceToken = _chainlinkReferenceToken (src/V3Oracle.sol#83)
+V3Oracle.setEmergencyAdmin(address).admin (src/V3Oracle.sol#265) lacks a zero-check on :
+		- emergencyAdmin = admin (src/V3Oracle.sol#266)
+V3Vault.constructor(string,string,address,INonfungiblePositionManager,IInterestRateModel,IV3Oracle,IPermit2)._asset (src/V3Vault.sol#172) lacks a zero-check on :
+		- asset = _asset (src/V3Vault.sol#178)
+V3Vault.setEmergencyAdmin(address).admin (src/V3Vault.sol#870) lacks a zero-check on :
+		- emergencyAdmin = admin (src/V3Vault.sol#871)
+Automator.setWithdrawer(address)._withdrawer (src/automators/Automator.sol#59) lacks a zero-check on :
+		- withdrawer = _withdrawer (src/automators/Automator.sol#61)
+Automator.withdrawETH(address).to (src/automators/Automator.sol#123) lacks a zero-check on :
+		- (sent) = to.call{value: balance}() (src/automators/Automator.sol#130)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+INFO:Detectors:
+Automator.withdrawBalances(address[],address) (src/automators/Automator.sol#104-117) has external calls inside a loop: balance = IERC20(tokens[i]).balanceOf(address(this)) (src/automators/Automator.sol#112)
+Automator._transferToken(address,IERC20,uint256,bool) (src/automators/Automator.sol#218-228) has external calls inside a loop: weth.withdraw(amount) (src/automators/Automator.sol#220)
+Automator._transferToken(address,IERC20,uint256,bool) (src/automators/Automator.sol#218-228) has external calls inside a loop: (sent) = to.call{value: amount}() (src/automators/Automator.sol#221)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation/#calls-inside-a-loop
+INFO:Detectors:
+Reentrancy in V3Vault._repay(uint256,uint256,bool,bytes) (src/V3Vault.sol#954-1014):
+	External calls:
+	- permit2.permitTransferFrom(permit,ISignatureTransfer.SignatureTransferDetails(address(this),assets),msg.sender,signature) (src/V3Vault.sol#981-983)
+	- SafeERC20.safeTransferFrom(IERC20(asset),msg.sender,address(this),assets) (src/V3Vault.sol#986)
+	State variables written after the call(s):
+	- dailyDebtIncreaseLimitLeft += assets (src/V3Vault.sol#995)
+	- _updateAndCheckCollateral(tokenId,newDebtExchangeRateX96,newLendExchangeRateX96,loanDebtShares + shares,loanDebtShares) (src/V3Vault.sol#997-999)
+		- tokenConfigs[token0].totalDebtShares -= SafeCast.toUint192(oldShares - newShares) (src/V3Vault.sol#1217)
+		- tokenConfigs[token1].totalDebtShares -= SafeCast.toUint192(oldShares - newShares) (src/V3Vault.sol#1218)
+		- tokenConfigs[token0].totalDebtShares += SafeCast.toUint192(newShares - oldShares) (src/V3Vault.sol#1220)
+		- tokenConfigs[token1].totalDebtShares += SafeCast.toUint192(newShares - oldShares) (src/V3Vault.sol#1221)
+Reentrancy in V3Vault._withdraw(address,address,uint256,bool) (src/V3Vault.sol#920-952):
+	External calls:
+	- SafeERC20.safeTransfer(IERC20(asset),receiver,assets) (src/V3Vault.sol#946)
+	State variables written after the call(s):
+	- dailyLendIncreaseLimitLeft += assets (src/V3Vault.sol#949)
+Reentrancy in AutoRange.configToken(uint256,address,AutoRange.PositionConfig) (src/transformers/AutoRange.sol#276-297):
+	External calls:
+	- _validateOwner(tokenId,vault) (src/transformers/AutoRange.sol#277)
+		- owner = IVault(vault).ownerOf(tokenId) (src/automators/Automator.sol#240)
+	State variables written after the call(s):
+	- positionConfigs[tokenId] = config (src/transformers/AutoRange.sol#284)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+INFO:Detectors:
+Reentrancy in V3Vault._cleanupLoan(uint256,uint256,uint256,address) (src/V3Vault.sol#1077-1085):
+	External calls:
+	- nonfungiblePositionManager.safeTransferFrom(address(this),owner,tokenId) (src/V3Vault.sol#1083)
+	Event emitted after the call(s):
+	- Remove(tokenId,owner) (src/V3Vault.sol#1084)
+Reentrancy in V3Vault._repay(uint256,uint256,bool,bytes) (src/V3Vault.sol#954-1014):
+	External calls:
+	- permit2.permitTransferFrom(permit,ISignatureTransfer.SignatureTransferDetails(address(this),assets),msg.sender,signature) (src/V3Vault.sol#981-983)
+	- SafeERC20.safeTransferFrom(IERC20(asset),msg.sender,address(this),assets) (src/V3Vault.sol#986)
+	- _cleanupLoan(tokenId,newDebtExchangeRateX96,newLendExchangeRateX96,owner) (src/V3Vault.sol#1005)
+		- nonfungiblePositionManager.safeTransferFrom(address(this),owner,tokenId) (src/V3Vault.sol#1083)
+	Event emitted after the call(s):
+	- Remove(tokenId,owner) (src/V3Vault.sol#1084)
+		- _cleanupLoan(tokenId,newDebtExchangeRateX96,newLendExchangeRateX96,owner) (src/V3Vault.sol#1005)
+	- Repay(tokenId,msg.sender,owner,assets,shares) (src/V3Vault.sol#1013)
+Reentrancy in Swapper._routerSwap(Swapper.RouterSwapParams) (src/utils/Swapper.sol#73-118):
+	External calls:
+	- SafeERC20.safeApprove(params.tokenIn,data.allowanceTarget,params.amountIn) (src/utils/Swapper.sol#87)
+	- (success) = zeroxRouter.call(data.data) (src/utils/Swapper.sol#89)
+	- SafeERC20.safeApprove(params.tokenIn,data.allowanceTarget,0) (src/utils/Swapper.sol#94)
+	- SafeERC20.safeTransfer(params.tokenIn,universalRouter,params.amountIn) (src/utils/Swapper.sol#98)
+	- IUniversalRouter(universalRouter).execute(data_scope_0.commands,data_scope_0.inputs,data_scope_0.deadline) (src/utils/Swapper.sol#99)
+	Event emitted after the call(s):
+	- Swap(address(params.tokenIn),address(params.tokenOut),amountInDelta,amountOutDelta) (src/utils/Swapper.sol#116)
+Reentrancy in V3Vault._withdraw(address,address,uint256,bool) (src/V3Vault.sol#920-952):
+	External calls:
+	- SafeERC20.safeTransfer(IERC20(asset),receiver,assets) (src/V3Vault.sol#946)
+	Event emitted after the call(s):
+	- Withdraw(msg.sender,receiver,owner,assets,shares) (src/V3Vault.sol#951)
+Reentrancy in V3Vault.borrow(uint256,uint256) (src/V3Vault.sol#550-602):
+	External calls:
+	- SafeERC20.safeTransfer(IERC20(asset),msg.sender,assets) (src/V3Vault.sol#599)
+	- SafeERC20.safeTransfer(IERC20(asset),owner,assets) (src/V3Vault.sol#599)
+	Event emitted after the call(s):
+	- Borrow(tokenId,owner,assets,shares) (src/V3Vault.sol#601)
+Reentrancy in AutoRange.configToken(uint256,address,AutoRange.PositionConfig) (src/transformers/AutoRange.sol#276-297):
+	External calls:
+	- _validateOwner(tokenId,vault) (src/transformers/AutoRange.sol#277)
+		- owner = IVault(vault).ownerOf(tokenId) (src/automators/Automator.sol#240)
+	Event emitted after the call(s):
+	- PositionConfigured(tokenId,config.lowerTickLimit,config.upperTickLimit,config.lowerTickDelta,config.upperTickDelta,config.token0SlippageX64,config.token1SlippageX64,config.onlyFees,config.maxRewardX64) (src/transformers/AutoRange.sol#286-296)
+Reentrancy in V3Vault.decreaseLiquidityAndCollect(IVault.DecreaseLiquidityAndCollectParams) (src/V3Vault.sol#609-646):
+	External calls:
+	- (amount0,amount1) = nonfungiblePositionManager.decreaseLiquidity(INonfungiblePositionManager.DecreaseLiquidityParams(params.tokenId,params.liquidity,params.amount0Min,params.amount1Min,params.deadline)) (src/V3Vault.sol#627-631)
+	- (amount0,amount1) = nonfungiblePositionManager.collect(collectParams) (src/V3Vault.sol#640)
+	Event emitted after the call(s):
+	- WithdrawCollateral(params.tokenId,owner,params.recipient,params.liquidity,amount0,amount1) (src/V3Vault.sol#645)
+Reentrancy in V3Vault.liquidate(IVault.LiquidateParams) (src/V3Vault.sol#685-757):
+	External calls:
+	- permit2.permitTransferFrom(permit,ISignatureTransfer.SignatureTransferDetails(address(this),state.liquidatorCost),msg.sender,signature) (src/V3Vault.sol#720-725)
+	- SafeERC20.safeTransferFrom(IERC20(asset),msg.sender,address(this),state.liquidatorCost) (src/V3Vault.sol#728)
+	- (amount0,amount1) = _sendPositionValue(params.tokenId,state.liquidationValue,state.fullValue,state.feeValue,msg.sender) (src/V3Vault.sol#734-735)
+		- nonfungiblePositionManager.decreaseLiquidity(INonfungiblePositionManager.DecreaseLiquidityParams(tokenId,liquidity,0,0,block.timestamp)) (src/V3Vault.sol#1065-1067)
+		- (amount0,amount1) = nonfungiblePositionManager.collect(INonfungiblePositionManager.CollectParams(tokenId,recipient,fees0,fees1)) (src/V3Vault.sol#1070-1072)
+	- _cleanupLoan(params.tokenId,state.newDebtExchangeRateX96,state.newLendExchangeRateX96,owner) (src/V3Vault.sol#744)
+		- nonfungiblePositionManager.safeTransferFrom(address(this),owner,tokenId) (src/V3Vault.sol#1083)
+	Event emitted after the call(s):
+	- Liquidate(params.tokenId,msg.sender,owner,state.fullValue,state.liquidatorCost,amount0,amount1,state.reserveCost,state.missing) (src/V3Vault.sol#746-756)
+	- Remove(tokenId,owner) (src/V3Vault.sol#1084)
+		- _cleanupLoan(params.tokenId,state.newDebtExchangeRateX96,state.newLendExchangeRateX96,owner) (src/V3Vault.sol#744)
+Reentrancy in V3Vault.withdrawReserves(uint256,address) (src/V3Vault.sol#765-783):
+	External calls:
+	- SafeERC20.safeTransfer(IERC20(asset),receiver,amount) (src/V3Vault.sol#779)
+	Event emitted after the call(s):
+	- WithdrawReserves(amount,receiver) (src/V3Vault.sol#782)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-3
+INFO:Detectors:
+V3Oracle._getChainlinkPriceX96(address) (src/V3Oracle.sol#329-343) uses timestamp for comparisons
+	Dangerous comparisons:
+	- updatedAt + feedConfig.maxFeedAge < block.timestamp || answer < 0 (src/V3Oracle.sol#338)
+V3Vault._updateGlobalInterest() (src/V3Vault.sol#1150-1165) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp > lastExchangeRateUpdate (src/V3Vault.sol#1155)
+V3Vault._calculateGlobalInterest() (src/V3Vault.sol#1167-1195) uses timestamp for comparisons
+	Dangerous comparisons:
+	- lastRateUpdate > 0 (src/V3Vault.sol#1186)
+V3Vault._resetDailyLendIncreaseLimit(uint256,bool) (src/V3Vault.sol#1246-1256) uses timestamp for comparisons
+	Dangerous comparisons:
+	- force || time > dailyLendIncreaseLimitLastReset (src/V3Vault.sol#1249)
+V3Vault._resetDailyDebtIncreaseLimit(uint256,bool) (src/V3Vault.sol#1258-1268) uses timestamp for comparisons
+	Dangerous comparisons:
+	- force || time > dailyDebtIncreaseLimitLastReset (src/V3Vault.sol#1261)
+AutoCompound.execute(AutoCompound.ExecuteParams) (src/transformers/AutoCompound.sol#101-193) uses timestamp for comparisons
+	Dangerous comparisons:
+	- state.maxAddAmount0 > 0 || state.maxAddAmount1 > 0 (src/transformers/AutoCompound.sol#160)
+AutoCompound._setBalance(uint256,address,uint256) (src/transformers/AutoCompound.sol#254-264) uses timestamp for comparisons
+	Dangerous comparisons:
+	- amount != currentBalance (src/transformers/AutoCompound.sol#256)
+	- amount > currentBalance (src/transformers/AutoCompound.sol#258)
+AutoCompound._checkApprovals(address,address) (src/transformers/AutoCompound.sol#276-286) uses timestamp for comparisons
+	Dangerous comparisons:
+	- allowance0 == 0 (src/transformers/AutoCompound.sol#279)
+	- allowance1 == 0 (src/transformers/AutoCompound.sol#283)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Detectors:
+AutoExit.execute(AutoExit.ExecuteParams) (src/automators/AutoExit.sol#100-214) has a high cyclomatic complexity (21).
+AutoRange.execute(AutoRange.ExecuteParams) (src/transformers/AutoRange.sol#111-272) has a high cyclomatic complexity (19).
+V3Utils.execute(uint256,V3Utils.Instructions) (src/transformers/V3Utils.sol#115-352) has a high cyclomatic complexity (16).
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#cyclomatic-complexity
+INFO:Detectors:
+Pragma version^0.8.0 (src/InterestRateModel.sol#2) allows old versions
+Pragma version^0.8.0 (src/V3Oracle.sol#2) allows old versions
+Pragma version^0.8.0 (src/V3Vault.sol#2) allows old versions
+Pragma version^0.8.0 (src/automators/AutoExit.sol#2) allows old versions
+Pragma version^0.8.0 (src/automators/Automator.sol#2) allows old versions
+Pragma version^0.8.0 (src/interfaces/IErrors.sol#2) allows old versions
+Pragma version^0.8.0 (src/interfaces/IInterestRateModel.sol#2) allows old versions
+Pragma version^0.8.0 (src/interfaces/IV3Oracle.sol#2) allows old versions
+Pragma version^0.8.0 (src/interfaces/IVault.sol#2) allows old versions
+Pragma version^0.8.0 (src/transformers/AutoCompound.sol#2) allows old versions
+Pragma version^0.8.0 (src/transformers/AutoRange.sol#2) allows old versions
+Pragma version^0.8.0 (src/transformers/LeverageTransformer.sol#2) allows old versions
+Pragma version^0.8.0 (src/transformers/V3Utils.sol#2) allows old versions
+Pragma version^0.8.0 (src/utils/FlashloanLiquidator.sol#2) allows old versions
+Pragma version^0.8.0 (src/utils/Swapper.sol#2) allows old versions
+solc-0.8.15 is not recommended for deployment
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+INFO:Detectors:
+Low level call in V3Vault.transform(uint256,address,bytes) (src/V3Vault.sol#497-545):
+	- (success) = transformer.call(data) (src/V3Vault.sol#522)
+Low level call in Automator.withdrawETH(address) (src/automators/Automator.sol#123-135):
+	- (sent) = to.call{value: balance}() (src/automators/Automator.sol#130)
+Low level call in Automator._transferToken(address,IERC20,uint256,bool) (src/automators/Automator.sol#218-228):
+	- (sent) = to.call{value: amount}() (src/automators/Automator.sol#221)
+Low level call in V3Utils._transferToken(address,IERC20,uint256,bool) (src/transformers/V3Utils.sol#864-874):
+	- (sent) = to.call{value: amount}() (src/transformers/V3Utils.sol#867)
+Low level call in Swapper._routerSwap(Swapper.RouterSwapParams) (src/utils/Swapper.sol#73-118):
+	- (success) = zeroxRouter.call(data.data) (src/utils/Swapper.sol#89)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#low-level-calls
+INFO:Detectors:
+Parameter InterestRateModel.setValues(uint256,uint256,uint256,uint256)._kinkX96 (src/InterestRateModel.sol#86) is not in mixedCase
+Parameter V3Oracle.setMaxPoolPriceDifference(uint16)._maxPoolPriceDifference (src/V3Oracle.sol#185) is not in mixedCase
+Parameter V3Vault.setLimits(uint256,uint256,uint256,uint256,uint256)._minLoanSize (src/V3Vault.sol#808) is not in mixedCase
+Parameter V3Vault.setLimits(uint256,uint256,uint256,uint256,uint256)._globalLendLimit (src/V3Vault.sol#809) is not in mixedCase
+Parameter V3Vault.setLimits(uint256,uint256,uint256,uint256,uint256)._globalDebtLimit (src/V3Vault.sol#810) is not in mixedCase
+Parameter V3Vault.setLimits(uint256,uint256,uint256,uint256,uint256)._dailyLendIncreaseLimitMin (src/V3Vault.sol#811) is not in mixedCase
+Parameter V3Vault.setLimits(uint256,uint256,uint256,uint256,uint256)._dailyDebtIncreaseLimitMin (src/V3Vault.sol#812) is not in mixedCase
+Parameter V3Vault.setReserveFactor(uint32)._reserveFactorX32 (src/V3Vault.sol#837) is not in mixedCase
+Parameter V3Vault.setReserveProtectionFactor(uint32)._reserveProtectionFactorX32 (src/V3Vault.sol#844) is not in mixedCase
+Parameter Automator.setWithdrawer(address)._withdrawer (src/automators/Automator.sol#59) is not in mixedCase
+Parameter Automator.setOperator(address,bool)._operator (src/automators/Automator.sol#69) is not in mixedCase
+Parameter Automator.setOperator(address,bool)._active (src/automators/Automator.sol#69) is not in mixedCase
+Parameter Automator.setVault(address,bool)._vault (src/automators/Automator.sol#79) is not in mixedCase
+Parameter Automator.setVault(address,bool)._active (src/automators/Automator.sol#79) is not in mixedCase
+Parameter Automator.setTWAPConfig(uint16,uint32)._maxTWAPTickDifference (src/automators/Automator.sol#87) is not in mixedCase
+Parameter Automator.setTWAPConfig(uint16,uint32)._TWAPSeconds (src/automators/Automator.sol#87) is not in mixedCase
+Variable Automator.TWAPSeconds (src/automators/Automator.sol#38) is not in mixedCase
+Parameter AutoCompound.setReward(uint64)._totalRewardX64 (src/transformers/AutoCompound.sol#243) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+INFO:Detectors:
+Variable V3Oracle._getFeeGrowthInside(IUniswapV3Pool,int24,int24,int24,uint256,uint256).feeGrowthGlobal0X128 (src/V3Oracle.sol#477) is too similar to V3Oracle._getFeeGrowthInside(IUniswapV3Pool,int24,int24,int24,uint256,uint256).feeGrowthGlobal1X128 (src/V3Oracle.sol#478)
+Variable V3Oracle._initializeState(uint256).feeGrowthInside0LastX128 (src/V3Oracle.sol#405) is too similar to V3Oracle._initializeState(uint256).feeGrowthInside1LastX128 (src/V3Oracle.sol#406)
+Variable V3Oracle._initializeState(uint256).feeGrowthInside0LastX128 (src/V3Oracle.sol#405) is too similar to V3Oracle._getUncollectedFees(V3Oracle.PositionState,int24).feeGrowthInside1LastX128 (src/V3Oracle.sol#450)
+Variable V3Oracle._getUncollectedFees(V3Oracle.PositionState,int24).feeGrowthInside0LastX128 (src/V3Oracle.sol#450) is too similar to V3Oracle._getUncollectedFees(V3Oracle.PositionState,int24).feeGrowthInside1LastX128 (src/V3Oracle.sol#450)
+Variable V3Oracle._getUncollectedFees(V3Oracle.PositionState,int24).feeGrowthInside0LastX128 (src/V3Oracle.sol#450) is too similar to V3Oracle._initializeState(uint256).feeGrowthInside1LastX128 (src/V3Oracle.sol#406)
+Variable V3Oracle._getFeeGrowthInside(IUniswapV3Pool,int24,int24,int24,uint256,uint256).feeGrowthInside0X128 (src/V3Oracle.sol#479) is too similar to V3Oracle._getFeeGrowthInside(IUniswapV3Pool,int24,int24,int24,uint256,uint256).feeGrowthInside1X128 (src/V3Oracle.sol#479)
+Variable V3Oracle._getFeeGrowthInside(IUniswapV3Pool,int24,int24,int24,uint256,uint256).lowerFeeGrowthOutside0X128 (src/V3Oracle.sol#480) is too similar to V3Oracle._getFeeGrowthInside(IUniswapV3Pool,int24,int24,int24,uint256,uint256).lowerFeeGrowthOutside1X128 (src/V3Oracle.sol#480)
+Variable V3Oracle._initializeState(uint256).tokensOwed0 (src/V3Oracle.sol#407) is too similar to V3Oracle._initializeState(uint256).tokensOwed1 (src/V3Oracle.sol#408)
+Variable V3Oracle._getFeeGrowthInside(IUniswapV3Pool,int24,int24,int24,uint256,uint256).upperFeeGrowthOutside0X128 (src/V3Oracle.sol#481) is too similar to V3Oracle._getFeeGrowthInside(IUniswapV3Pool,int24,int24,int24,uint256,uint256).upperFeeGrowthOutside1X128 (src/V3Oracle.sol#481)
+Variable V3Vault.MAX_LIQUIDATION_PENALTY_X32 (src/V3Vault.sol#39) is too similar to V3Vault.MIN_LIQUIDATION_PENALTY_X32 (src/V3Vault.sol#38)
+Variable V3Vault.dailyDebtIncreaseLimitLastReset (src/V3Vault.sol#145) is too similar to V3Vault.dailyLendIncreaseLimitLastReset (src/V3Vault.sol#140)
+Variable Swapper._poolSwap(Swapper.PoolSwapParams).amount0Delta (src/utils/Swapper.sol#134) is too similar to Swapper.uniswapV3SwapCallback(int256,int256,bytes).amount1Delta (src/utils/Swapper.sol#156)
+Variable Swapper._poolSwap(Swapper.PoolSwapParams).amount0Delta (src/utils/Swapper.sol#134) is too similar to Swapper._poolSwap(Swapper.PoolSwapParams).amount1Delta (src/utils/Swapper.sol#134)
+Variable Swapper.uniswapV3SwapCallback(int256,int256,bytes).amount0Delta (src/utils/Swapper.sol#156) is too similar to Swapper.uniswapV3SwapCallback(int256,int256,bytes).amount1Delta (src/utils/Swapper.sol#156)
+Variable Swapper.uniswapV3SwapCallback(int256,int256,bytes).amount0Delta (src/utils/Swapper.sol#156) is too similar to Swapper._poolSwap(Swapper.PoolSwapParams).amount1Delta (src/utils/Swapper.sol#134)
+Variable Automator._decreaseFullLiquidityAndCollect(uint256,uint128,uint256,uint256,uint256).amountRemoveMin0 (src/automators/Automator.sol#196) is too similar to Automator._decreaseFullLiquidityAndCollect(uint256,uint128,uint256,uint256,uint256).amountRemoveMin1 (src/automators/Automator.sol#197)
+Variable LeverageTransformer.leverageDown(LeverageTransformer.LeverageDownParams).decreaseLiquidityParams (src/transformers/LeverageTransformer.sol#130-133) is too similar to LeverageTransformer.leverageUp(LeverageTransformer.LeverageUpParams).increaseLiquidityParams (src/transformers/LeverageTransformer.sol#80-83)
+Variable V3Utils._prepareAdd(IERC20,IERC20,IERC20,uint256,uint256,uint256).amountAdded0 (src/transformers/V3Utils.sol#661) is too similar to V3Utils._prepareAdd(IERC20,IERC20,IERC20,uint256,uint256,uint256).amountAdded1 (src/transformers/V3Utils.sol#662)
+Variable V3Utils._swapAndPrepareAmounts(V3Utils.SwapAndMintParams,bool).amountInDelta0 (src/transformers/V3Utils.sol#806) is too similar to V3Utils._swapAndPrepareAmounts(V3Utils.SwapAndMintParams,bool).amountInDelta1 (src/transformers/V3Utils.sol#811)
+Variable V3Utils._swapAndPrepareAmounts(V3Utils.SwapAndMintParams,bool).amountOutDelta0 (src/transformers/V3Utils.sol#806) is too similar to V3Utils._swapAndPrepareAmounts(V3Utils.SwapAndMintParams,bool).amountOutDelta1 (src/transformers/V3Utils.sol#811)
+Variable V3Utils._collectFees(uint256,IERC20,IERC20,uint128,uint128).balanceAfter0 (src/transformers/V3Utils.sol#901) is too similar to V3Utils._collectFees(uint256,IERC20,IERC20,uint128,uint128).balanceAfter1 (src/transformers/V3Utils.sol#902)
+Variable V3Utils._collectFees(uint256,IERC20,IERC20,uint128,uint128).balanceBefore0 (src/transformers/V3Utils.sol#896) is too similar to V3Utils._collectFees(uint256,IERC20,IERC20,uint128,uint128).balanceBefore1 (src/transformers/V3Utils.sol#897)
+Variable V3Utils._collectFees(uint256,IERC20,IERC20,uint128,uint128).collectAmount0 (src/transformers/V3Utils.sol#892) is too similar to V3Utils._collectFees(uint256,IERC20,IERC20,uint128,uint128).collectAmount1 (src/transformers/V3Utils.sol#892)
+Variable FlashloanLiquidator.uniswapV3FlashCallback(uint256,uint256,bytes).balance_scope_0 (src/utils/FlashloanLiquidator.sol#95) is too similar to FlashloanLiquidator.uniswapV3FlashCallback(uint256,uint256,bytes).balance_scope_1 (src/utils/FlashloanLiquidator.sol#101)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#variable-names-too-similar
+INFO:Slither:. analyzed (63 contracts with 93 detectors), 155 result(s) found
