@@ -1,35 +1,3 @@
-
-# Repo setup
-
-## ⭐️ Sponsor: Add code to this repo
-
-- [ ] Create a PR to this repo with the below changes:
-- [ ] Provide a self-contained repository with working commands that will build (at least) all in-scope contracts, and commands that will run tests producing gas reports for the relevant contracts.
-- [ ] Make sure your code is thoroughly commented using the [NatSpec format](https://docs.soliditylang.org/en/v0.5.10/natspec-format.html#natspec-format).
-- [ ] Please have final versions of contracts and documentation added/updated in this repo **no less than 48 business hours prior to audit start time.**
-- [ ] Be prepared for a 🚨code freeze🚨 for the duration of the audit — important because it establishes a level playing field. We want to ensure everyone's looking at the same code, no matter when they look during the audit. (Note: this includes your own repo, since a PR can leak alpha to our wardens!)
-
-
----
-
-## ⭐️ Sponsor: Edit this `README.md` file
-
-- [ ] Modify the contents of this `README.md` file. Describe how your code is supposed to work with links to any relevent documentation and any other criteria/details that the C4 Wardens should keep in mind when reviewing. (Here are two well-constructed examples: [Ajna Protocol](https://github.com/code-423n4/2023-05-ajna) and [Maia DAO Ecosystem](https://github.com/code-423n4/2023-05-maia))
-- [ ] Review the Gas award pool amount. This can be adjusted up or down, based on your preference - just flag it for Code4rena staff so we can update the pool totals across all comms channels.
-- [ ] Optional / nice to have: pre-record a high-level overview of your protocol (not just specific smart contract functions). This saves wardens a lot of time wading through documentation.
-- [ ] [This checklist in Notion](https://code4rena.notion.site/Key-info-for-Code4rena-sponsors-f60764c4c4574bbf8e7a6dbd72cc49b4#0cafa01e6201462e9f78677a39e09746) provides some best practices for Code4rena audits.
-
-## ⭐️ Sponsor: Final touches
-- [ ] Review and confirm the details in the section titled "Scoping details" and alert Code4rena staff of any changes.
-- [ ] Review and confirm the list of in-scope files in the `scope.txt` file in this directory.  Any files not listed as "in scope" will be considered out of scope for the purposes of judging, even if the file will be part of the deployed contracts.
-- [ ] Check that images and other files used in this README have been uploaded to the repo as a file and then linked in the README using absolute path (e.g. `https://github.com/code-423n4/yourrepo-url/filepath.png`)
-- [ ] Ensure that *all* links and image/file paths in this README use absolute paths, not relative paths
-- [ ] Check that all README information is in markdown format (HTML does not render on Code4rena.com)
-- [ ] Remove any part of this template that's not relevant to the final version of the README (e.g. instructions in brackets and italic)
-- [ ] Delete this checklist and all text above the line below when you're ready.
-
----
-
 # Revert Lend audit details
 - Total Prize Pool: $88,500 in USDC
   - HM awards: $42,900 in USDC
@@ -55,87 +23,123 @@ Automated findings output for the audit can be found [here](https://github.com/c
 
 _Note for C4 wardens: Anything included in this `Automated Findings / Publicly Known Issues` section is considered a publicly known issue and is ineligible for awards._
 
-[ ⭐️ SPONSORS: Are there any known issues or risks deemed acceptable that shouldn't lead to a valid finding? If so, list them here. ]
+Note from Revert:
 
+Liquidations of undercollateralized positions may be temporarly disabled when the pool price of a position is moved away too much from the oracle price. This issue is automatically resolved by arbitrage in most cases, but if there is not enough incentive to do so, the liquiditor has enough incentive to do the arbitrage as part of the liquidation process - because of the liquidation premium. For more details see Finding 4 in the audit by Hydn (see below).
 
 # Overview
 
-[ ⭐️ SPONSORS: add info here ]
+This repository contains the smart contracts for Revert Lend protocol.
+
+It uses Foundry as development toolchain.
+
+To get an understanding of the basic concepts, and advanced topics like transformers please read the whitepaper.
 
 ## Links
 
 - **Previous audits:** 
+[Hydn](https://github.com/code-423n4/2024-03-revert-lend/blob/main/audits/HYDN_-_Revert_Finance_Vault_Audit_Report.docx.pdf)
+
 - **Documentation:**
+[Whitepaper](https://github.com/revert-finance/lend-whitepaper/blob/main/Revert_Lend-wp.pdf)
+
 - **Website:**
+[revert.finance](https://revert.finance)
+
 - **Twitter:** 
-- **Discord:** 
+[@revertfinance](https://twitter.com/revertfinance)
+
+- **Discord:**
+[Revert Discord](https://discord.gg/KZexNMsS)
 
 
 # Scope
 
-[ ⭐️ SPONSORS: add scoping and technical details here ]
-
-- [ ] In the table format shown below, provide the name of each contract and:
-  - [ ] source lines of code (excluding blank lines and comments) in each *For line of code counts, we recommend running prettier with a 100-character line length, and using [cloc](https://github.com/AlDanial/cloc).* 
-  - [ ] external contracts called in each
-  - [ ] libraries used in each
-
-*List all files in scope in the table below (along with hyperlinks) -- and feel free to add notes here to emphasize areas of focus.*
-
 | Contract | SLOC | Purpose | Libraries used |  
 | ----------- | ----------- | ----------- | ----------- |
-| [contracts/folder/sample.sol](https://github.com/code-423n4/repo-name/blob/contracts/folder/sample.sol) | 123 | This contract does XYZ | [`@openzeppelin/*`](https://openzeppelin.com/contracts/) |
+| [src/V3Vault.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/V3Vault.sol) | 887 | Vault contract which keeps V3 Positions, lent assets and handles loans. | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) [`@permit2`](https://github.com/uniswap/permit2) |
+| [src/V3Oracle.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/V3Oracle.sol) | 371 | Oracle which handles Chainlink Feeds, Uniswap V3 TWAPs to get values of V3 Positions | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) [`@chainlink`](https://github.com/smartcontractkit/chainlink) |
+| [src/InterestRateModel.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/InterestRateModel.sol) | 65 | Calculates interest rates for V3Vault | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) |
+| [src/automators/AutoExit.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/automators/AutoExit.sol) | 185 | Lets Revert controlled bot auto-exit positions | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) |
+| [src/automators/Automator.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/automators/Automator.sol) | 181 | Base class which adds handling of operator, fees and permissions for automator contracts. | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) |
+| [src/transformers/AutoCompound.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/transformers/AutoCompound.sol) | 200 | Lets Revert controlled bot auto-compound positions (also when they are used as collateral) | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) |
+| [src/transformers/AutoRange.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/transformers/AutoRange.sol) | 235 | Lets Revert controlled bot auto-range positions (also when they are used as collateral) | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) |
+| [src/transformers/LeverageTransformer.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/transformers/LeverageTransformer.sol) | 133 | Lets positions being leveraged by borrowing, swapping and readding to collateralized position atomically. Also supports deleveraging. | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) |
+| [src/transformers/V3Utils.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/transformers/V3Utils.sol) | 750 | V3Utils contract (atomic swap and manage liquidity functions) which works with V3Vault and supports Permit2. | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) [`@permit2`](https://github.com/uniswap/permit2) |
+| [src/utils/FlashloanLiquidator.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/utils/FlashloanLiquidator.sol) | 89 | Util contract to do atomic liquidations using a Uniswap V3 Flashloan | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) |
+| [src/utils/Swapper.sol](https://github.com/code-423n4/2024-03-revert-lend/blob/main/src/utils/Swapper.sol) | 118 | Base class which adds logic for doing swaps with UniversalRouter, 0x Router and pool swaps. | [`@openzeppelin`](https://github.com/OpenZeppelin/openzeppelin-contracts) [`@v3-core`](https://github.com/Uniswap/v3-core) [`@v3-periphery`](https://github.com/Uniswap/v3-periphery) |
+
 
 ## Out of scope
 
-*List any files/contracts that are out of scope for this audit.*
+Everything NOT in /src
 
 # Additional Context
 
-- [ ] Describe any novel or unique curve logic or mathematical models implemented in the contracts
-- [ ] Please list specific ERC20 that your protocol is anticipated to interact with. Could be "any" (literally anything, fee on transfer tokens, ERC777 tokens and so forth) or a list of tokens you envision using on launch.
-- [ ] Please list specific ERC721 that your protocol is anticipated to interact with.
-- [ ] Which blockchains will this code be deployed to, and are considered in scope for this audit?
-- [ ] Please list all trusted roles (e.g. operators, slashers, pausers, etc.), the privileges they hold, and any conditions under which privilege escalation is expected/allowable
-- [ ] In the event of a DOS, could you outline a minimum duration after which you would consider a finding to be valid? This question is asked in the context of most systems' capacity to handle DoS attacks gracefully for a certain period.
-- [ ] Is any part of your implementation intended to conform to any EIP's? If yes, please list the contracts in this format: 
-  - `Contract1`: Should comply with `ERC/EIPX`
-  - `Contract2`: Should comply with `ERC/EIPY`
+- Roles in the protocol: Owner (which will be set to a Multisig and Timelock), EmergencyAdmin (which will be set to a Multisig), Operators (which are EOA used by bots to call actions in Automator contracts)
+
+- Special ERC20 tokens like fee-on-transfer or rebasing tokens are not supported. Usage of them will revert.
+
+- The only allowed ERC721 are UniswapV3 positions.
+
+- The protocol should be able to be deployed on any EVM compatible chain - by using chain specific config values
+
+- `V3Vault`: Should comply with `ERC/EIP4626`
+
 
 ## Attack ideas (Where to look for bugs)
-*List specific areas to address - see [this blog post](https://medium.com/code4rena/the-security-council-elections-within-the-arbitrum-dao-a-comprehensive-guide-aa6d001aae60#9adb) for an example*
+- Reentrancy
+- Share calculation
+- Price manipulation
+- Crafted ERC-20 Tokens
+- Crafted external swap calldata
 
 ## Main invariants
-*Describe the project's main invariants (properties that should NEVER EVER be broken).*
+- Debt can never be bigger than lent assets (after all loans are payed back or liquidated).
 
 ## Scoping Details 
-[ ⭐️ SPONSORS: please confirm/edit the information below. ]
-
 ```
 - If you have a public code repo, please share it here: https://github.com/revert-finance/vault (private for now)   
 - How many contracts are in scope?: 11   
 - Total SLoC for these contracts?: 3000  
 - How many external imports are there?: 10  
 - How many separate interfaces and struct definitions are there for the contracts within scope?: 4  
-- Does most of your code generally use composition or inheritance?: Composition   
+- Does most of your code generally use composition or inheritance?: both   
 - How many external calls?: 10   
 - What is the overall line coverage percentage provided by your tests?: 80
-- Is this an upgrade of an existing system?:
+- Is this an upgrade of an existing system?: No
 - Check all that apply (e.g. timelock, NFT, AMM, ERC20, rollups, etc.): NFT, AMM, ERC-20 Token  
-- Is there a need to understand a separate part of the codebase / get context in order to audit this part of the protocol?: False  
-- Please describe required context:   
-- Does it use an oracle?: Chainlink
+- Is there a need to understand a separate part of the codebase / get context in order to audit this part of the protocol?: UniswapV3, Permit2  
+- Does it use an oracle?: Chainlink, Uniswap V3 TWAP
 - Describe any novel or unique curve logic or mathematical models your code uses: No 
 - Is this either a fork of or an alternate implementation of another project?: False  
-- Does it use a side-chain?:
-- Describe any specific areas you would like addressed:
+- Does it use a side-chain?: No
 ```
 
 # Tests
 
-*Provide every step required to build the project from a fresh git clone, as well as steps to run the tests with a gas report.* 
+First time run 
 
-*Note: Many wardens run Slither as a first pass for testing.  Please document any known errors with no workaround.* 
+```sh
+forge install
+```
+
+to get dependencies. Then:
+
+Because the v3-periphery library (Solidity v0.8 branch) in lib/v3-periphery/contracts/libraries/PoolAddress.sol has a different POOL_INIT_CODE_HASH than the one deployed on Mainnet this needs to be changed for the integration tests to work properly and for deployment!
+
+bytes32 internal constant POOL_INIT_CODE_HASH = 0xa598dd2fba360510c5a8f02f44423a4468e902df5857dbce3ca162a43a3a31ff;
+
+needs to be changed to 
+
+bytes32 internal constant POOL_INIT_CODE_HASH = 0xe34f199b19b2b4f47f68442619d555527d244f78a3297ea89325f843f87b8b54;
+
+Most tests use a forked state of Ethereum Mainnet. You can run all tests with: 
+
+```sh
+forge test
+```
+
 
 ## Miscellaneous
 
