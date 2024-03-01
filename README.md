@@ -146,7 +146,7 @@ Most tests use a forked state of Ethereum Mainnet. You can run all tests with:
 forge test
 ```
 
-If the `https://rpc.ankr.com/eth` or `https://rpc.ankr.com/polygon` fork urls aren't working, please replace their instances with your own rpc urls (from the likes of Alchemy or Infura).
+If the `https://rpc.ankr.com/eth` fork url isn't working, please replace it your own rpc url (from the likes of Alchemy or Infura).
 
 ## Slither
 
