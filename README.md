@@ -5,10 +5,10 @@
   - QA awards: $1,300 in USDC
   - Bot Race awards: $3,900 in USDC
   - Gas awards: $1,300 in USDC
-  - Judge awards: $8,300 in USDC
+  - Judge awards: $10,650 in USDC
   - Lookout awards: $4,200 USDC (Notion: Sum of Pre-sort fee + Pre-sort early bonus)
   - Scout awards: $500 in USDC
-  - Mitigation Review: $2,350 in USDC (*Opportunity goes to top 3 certified wardens based on placement in this audit.*)
+  - Mitigation Review: $21,150 in USDC (*Opportunity goes to top 3 certified wardens based on placement in this audit.*)
 - Join [C4 Discord](https://discord.gg/code4rena) to register
 - Submit findings [using the C4 form](https://code4rena.com/contests/2024-03-revert-lend/submit)
 - [Read our guidelines for more details](https://docs.code4rena.com/roles/wardens)
