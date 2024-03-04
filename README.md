@@ -5,7 +5,7 @@
   - QA awards: $1,300 in USDC
   - Bot Race awards: $3,900 in USDC
   - Gas awards: $1,300 in USDC
-  - Judge awards: $29,450 in USDC
+  - Judge awards: $8,300 in USDC
   - Lookout awards: $4,200 USDC (Notion: Sum of Pre-sort fee + Pre-sort early bonus)
   - Scout awards: $500 in USDC
   - Mitigation Review: $2,350 in USDC (*Opportunity goes to top 3 certified wardens based on placement in this audit.*)
