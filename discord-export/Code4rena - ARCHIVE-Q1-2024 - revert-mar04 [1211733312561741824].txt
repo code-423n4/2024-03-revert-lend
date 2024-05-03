@@ -1,0 +1,2247 @@
+==============================================================
+Guild: Code4rena
+Channel: ARCHIVE-Q1-2024 / revert-mar04
+==============================================================
+
+[02/29/2024 19:29] knownfactc4_29311 (pinned)
+👋 Hello and welcome to the audit channel for the $88,500 in USDC **Revert Lend** audit!
+
+📆 Audit opens 03/04/2024 20:00 (20:00 UTC) and runs through 03/15/2024 19:00 (20:00 UTC) (10 days).
+
+Please give a warm welcome to the Revert team, particularly @mario | revert.finance and @kalinbas, who will be available for questions either here in the channel or via a PRIVATE thread in the EST timezone.
+
+We'll be posting relevant links, documentation, etc. here, so if you intend to participate in this audit, consider enabling notifications for this channel. 🐺 ⏰
+
+Audit Page: https://code4rena.com/audits/2024-03-revert-lend
+
+{Reactions}
+💜 (2) 
+
+[02/29/2024 19:29] knownfactc4_29311
+Pinned a message.
+
+
+[03/04/2024 17:42] web3tycoon
+cant wait for this competition
+
+{Reactions}
+🔥 (3) 
+
+[03/04/2024 19:52] 0xayush_
+let's see if i can find something here
+
+{Reactions}
+🫡 
+
+[03/04/2024 20:02] C4 (pinned)
+**Automated Findings / Publicly Known Issues**
+
+Reminder: all [Automated Findings / Publicly Known Issues](https://github.com/code-423n4/2024-03-revert-lend#automated-findings--publicly-known-issues) are out of scope and ineligible for awards.
+
+{Embed}
+https://github.com/code-423n4/2024-03-revert-lend
+GitHub - code-423n4/2024-03-revert-lend
+Contribute to code-423n4/2024-03-revert-lend development by creating an account on GitHub.
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/c995ed92-96c5-4072-ae66-8ace89047379-192EA
+
+
+[03/04/2024 20:04] ronpetamgas666
+Hello
+
+
+[03/04/2024 20:04] thebrittfactor
+Pinned a message.
+
+
+[03/04/2024 20:06] mladenov0603
+best of luck 🙂
+
+{Reactions}
+👍 
+
+[03/04/2024 20:07] 14si2o_flint
+@thebrittfactor | C4 From Readme: Judge awards: $29,450 in USDC  
+
+That's quite a lot? Someone made a mistake or did judges get a 500% raise? 😄
+
+{Reactions}
+thankyou 
+
+[03/04/2024 20:10] ronpetamgas666
+@mario | revert.finance Griefing attacks are ok to report?
+
+
+[03/04/2024 20:18] itsmetechjay
+We'll take a look. Thanks for the flag.
+
+{Reactions}
+👍 (2) 
+
+[03/04/2024 20:26] mario.revert.finance
+Hi, yeah
+
+
+[03/04/2024 20:29] ronpetamgas666
+Aight ty
+
+
+[03/04/2024 20:57] ronpetamgas666
+Good luck for everyone btw!
+
+
+[03/04/2024 21:00] banditx0x
+$30K judging rewards is almost as high as HM rewards 👀
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/image-449EB.png
+
+
+[03/04/2024 21:00] ronpetamgas666
+They are already checking it
+
+
+[03/04/2024 21:00] ronpetamgas666
+But doubt judges are mad at it 😆
+
+
+[03/04/2024 21:00] ronpetamgas666
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/image-1FA7C.png
+
+
+[03/04/2024 21:00] banditx0x
+ahh thanks
+
+
+[03/04/2024 21:01] ronpetamgas666
+Np!
+
+
+[03/04/2024 21:01] 0xwizard
+with the amount of reports being submitted lately, I don't think they made a mistake
+
+{Reactions}
+🤣 
+
+[03/04/2024 21:02] 0xwizard
+maybe the number of contests running is a lot for one platform, it's hard to judge 6 contest running and more upcoming
+
+
+[03/04/2024 21:02] 0xwizard
+I personally wouldn't mind the judges being paid that much
+
+
+[03/04/2024 21:03] 0xwizard
+it's a lot of work
+
+
+[03/04/2024 21:03] 14si2o_flint
+They just added the migitation pool to the judge awards, simple error
+
+
+[03/04/2024 21:03] 14si2o_flint
+Not that judges shouldn't get paid more
+
+
+[03/04/2024 21:04] 0xwizard
+well, it's a matter of personal opinion. I respect yours
+
+
+[03/04/2024 21:04] ronpetamgas666
+It's actualy hard to make a contest w everyone happy
+
+
+[03/04/2024 21:04] ronpetamgas666
+Including the protocol, judges, users...
+
+
+[03/04/2024 21:05] ronpetamgas666
+but bet they try their best
+
+
+[03/04/2024 21:05] ronpetamgas666
+anyways gn goodluck
+
+
+[03/04/2024 21:05] 0xwizard
+good luck bro
+
+
+[03/04/2024 21:26] knownfactc4_29311
+So it was. The discrepancy is fixed, values match those of the RVSP now.
+
+{Reactions}
+👍 thankyou 
+
+[03/04/2024 22:06] sagetony224
+Hello, please I keep getting this error anytime I do forge install
+
+C:/Program Files/Git/mingw64/libexec/git-core\git-submodule: line 22: .: git-sh-setup: file not found
+
+Please how can I resolve it
+
+
+[03/04/2024 22:08] sagetony224
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/jPNG-C8BE7.PNG
+
+
+[03/04/2024 22:16] mike_bello90
+I can install correctly, I'm not gettint that error
+
+
+[03/04/2024 22:16] mike_bello90
+in the installation
+
+
+[03/04/2024 22:17] mike_bello90
+Someone get this error trying to run the tests
+
+
+[03/04/2024 22:17] mike_bello90
+`2024-03-revert-lend % forge test
+Error: Unknown version provided`
+
+
+[03/04/2024 22:22] kalinbas
+Do you have the latest version of foundry?
+
+
+[03/04/2024 22:23] mike_bello90
+that was the reason, thanks, I ran foundryup and it worked after that
+
+
+[03/04/2024 22:23] sagetony224
+I have installed it
+
+
+[03/04/2024 22:23] mike_bello90
+you should try running foundryup
+
+
+[03/04/2024 22:24] sagetony224
+successfully installed it, thanks
+
+{Reactions}
+hi5 
+
+[03/05/2024 07:26] web3tycoon
+#revert-mar04 how is Q96 derived
+
+
+[03/05/2024 08:16] 0xjuaan
+anyone know how to fix this error when I run `forge coverage`?
+
+
+[03/05/2024 08:17] 0xjuaan
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/image-E6FDF.png
+
+
+[03/05/2024 08:21] 0xjuaan
+actually it seems that `forge coverage --ir-minimum` works
+
+{Reactions}
+🧙 (3) 
+
+[03/05/2024 09:40] kalinbas
+Its a constant in the contract 2 ** 96
+
+
+[03/05/2024 10:52] 14si2o_flint
+@kalinbas Is there a deployment script? It would be useful to have an approximate idea of the values with which the contracts will be deployed.
+
+
+[03/05/2024 12:38] kalinbas
+No we don't have a "definitive" deployment script yet. But the important values will be _dailyLendIncreaseLimitMin and _dailyDebtIncreaseLimitMin which limit the initial daily growth. Imagine them to be maybe USDC 10000
+
+
+[03/05/2024 12:39] kalinbas
+_globalLendLimit and _globalDebtLimit maybe USDC 100000
+
+
+[03/05/2024 12:40] kalinbas
+These limits can be changed quickly if needed
+
+
+[03/05/2024 12:43] 14si2o_flint
+Ok I understand!
+
+
+[03/05/2024 14:18] bbl4de.xyz
+Is the documentation roughly up to date or should we focus on the whitepaper exclusively? 
+https://docs.revert.finance/revert
+
+{Embed}
+https://docs.revert.finance/revert
+Introduction | Revert
+
+
+[03/05/2024 15:00] hisoul22
+I believe the whitepaper is up tp date
+
+
+[03/05/2024 15:02] kalinbas
+About the Vault it is all in the whitepaper, the other contracts like AutoRange, AutoExit, AutoCompound (which are already live in their v1) are described in their current version in the Docs https://docs.revert.finance/revert But they have been slightly changed for their v2 which is going to be used with Revert Lend
+
+
+[03/05/2024 15:06] web3tycoon
+about automator.sol can you say in a nutshell its like the interface to transformers..
+on a high level
+
+
+[03/05/2024 15:08] web3tycoon
+@kalinbas hello
+
+
+[03/05/2024 15:11] kalinbas
+Automator has the logic to give access to operator accounts, keep protocol fees to be withdrawn by the withdrawer account, and some other commonly used functions
+
+
+[03/05/2024 15:12] kalinbas
+In theory any function can be called on a Transformer (there is no interface)
+
+
+[03/05/2024 15:12] web3tycoon
+okay is the operator the liquidity providiers or the lenders? or the bots set by the liquidity providiers
+
+
+[03/05/2024 15:14] kalinbas
+The operators are revert controlled EAO which can call the privileged execute function in AutoRange, AutoExit and AutoCompound contracts
+
+
+[03/05/2024 15:16] kalinbas
+Because there is the need to calculate off-chain swaps (for 0x or UniversalRouter) there is a possibility to take advantage and do suboptimal swaps until the configured slippage value. Thats why these operators are "trusted" EAO which are run by revert bots
+
+
+[03/05/2024 15:20] web3tycoon
+mmmh okay let me scope again thank you
+
+
+[03/05/2024 15:30] web3tycoon
+@kalinbas  can you send a link of the docs section of automators
+
+
+[03/05/2024 15:33] web3tycoon
+please : )
+
+
+[03/05/2024 15:45] 14si2o_flint
+@kalinbas Am I correct in my understanding that the V3Vault will only have 1 asset (which is USDC?) like a standard ERC4626 Vault, but the Uni V3 NFT positions are accepted as collateral for depositing liquidity and taking loans.
+
+In this way every token (in theory) can be used for one single vault. Correct?
+
+
+[03/05/2024 15:47] 0x11singh99
+on whitepaper v0.1 Draft is written. So does it mean it is revert lend first time or v2 as your comment stated ?
+
+
+[03/05/2024 15:48] kalinbas
+true if collateralfactor > 0 for both tokens you may take a loan
+
+
+[03/05/2024 15:49] kalinbas
+ah sorry for the confusion, yeah.. for whitepaper there is only one version
+
+
+[03/05/2024 15:50] 14si2o_flint
+Is a confirmed whitelist of tokens where the collaterfactor will be set or is this decided in another manner?
+
+
+[03/05/2024 15:51] kalinbas
+No confirmed list, but imagine it to be only the main tokens like ETH, BTC, USDC, DAI
+
+{Reactions}
+👍 
+
+[03/05/2024 15:52] kalinbas
+But also imagine there to be less liquid tokens with lower collateral factors / debt limits
+
+
+[03/05/2024 15:52] 0x11singh99
+and whitepaper is updated according to current in scope code base right ?
+
+
+[03/05/2024 15:53] kalinbas
+There maybe some diferences, but mostly yes
+
+{Reactions}
+👍 
+
+[03/05/2024 21:21] mike_bello90
+does anyone know What is transform mode?
+
+
+[03/05/2024 21:44] kalinbas
+when you call the transform() function on V3Vault it calls a method on another contract (the transformer) which is granted access to the collateral nft to "transform" it - after this transformation V3Vault checks that the collateralvalue is still large enough for the loan (otherwise it reverts)
+
+
+[03/05/2024 21:46] kalinbas
+you can find a more complete description in the whitepaper
+
+
+[03/05/2024 22:00] jecikzerrikan
+@kalinbas ,I think that @Mike_Bello was referring to the isTransformMode, which looks like a variable controlling if the operation can be called by the owner or the vault itself.
+
+
+[03/05/2024 22:02] mike_bello90
+thanks, but as jecikpo said I was asking about isTransformMode 🙂
+
+
+[03/05/2024 22:12] kalinbas
+bool isTransformMode =
+            transformedTokenId > 0 && transformedTokenId == tokenId && transformerAllowList[msg.sender];
+
+
+[03/05/2024 22:14] kalinbas
+isTransformMode in this context is used to decide if collateralHealth needs to be checked or not. when it is in isTransformMode collateral doesn't need to be checked at that time because the call comes from a transformer
+
+
+[03/05/2024 22:14] kalinbas
+so the check is done later by the transformer
+
+
+[03/05/2024 22:15] kalinbas
+this allows borrowing more than allowed by collateral (temporarly) - as used by LeverageTransfomer
+
+{Reactions}
+👍 (2) 🤝 
+
+[03/05/2024 22:20] jecikzerrikan
+and the transformTokenId is just to protect against reentrancy, right?
+
+
+[03/05/2024 22:41] kalinbas
+its used for reentrancy protection but also to know which position is the current one, when another position should replace it (see onERC721Received)
+
+{Reactions}
+👍 
+
+[03/06/2024 00:44] liveactionllamac4 (pinned)
+ℹ️ Wardens - please note that the automated findings output for the Revert Lend bot race will be announced and made available tomorrow. Thank you for your patience!
+
+
+[03/06/2024 00:44] liveactionllamac4
+Pinned a message.
+
+
+[03/06/2024 11:13] vikqaz
+@kalinbas
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/Screenshot_2024-03-06_at_4.12.24_PM-F529F.png
+
+
+[03/06/2024 11:14] vikqaz
+@kalinbas m not able to find this in Section 6.2?
+
+
+[03/06/2024 11:18] kalinbas
+Hm it is named "Normal rate up to kink" in section 6.2.4
+
+
+[03/06/2024 11:19] kalinbas
+If you have a look at the code it should be understandable.
+
+
+[03/06/2024 11:19] vikqaz
+ok 🫡
+
+
+[03/06/2024 12:33] 0xdemonnn
+Create a private thread, pls check :thankyou: @mario | revert.finance@kalinbas
+
+
+[03/06/2024 13:29] zxriptor
+Can anyone enlighten me how could AutoCompound.sol::execute() function be prone to reentrancy? This is a crit from HYDN audit which was resolved by adding "nonReentrant" modifier. I am probably dumb by thinking there is no way a callback can allow a malicious user to withdraw their position in the middle of execute() function execution even without nonReentrant modifier. What am I missing?
+
+
+[03/06/2024 13:39] kalinbas
+The issue was about the handling of positionBalances and the fact that _setBalance and _increaseBalance are called at the end
+
+
+[03/06/2024 13:41] kalinbas
+and at the beginning of the method added positionBalances[params.tokenId][state.token0] to the available balances which could be done multiple times
+
+
+[03/06/2024 13:45] zxriptor
+yeah, so there must be a way for an attacker to withdraw their position while the code execution is between lines 120 and 175. And I can't see how that can happen
+
+
+[03/06/2024 13:52] sp1cymeatball
+@kalinbas here we use Q64 numbers to calculate the fee
+```
+state.feeAmount0 * params.rewardX64 / Q64
+```
+does this mean that 2^64 = 100% and for example rewardX64 = 2^64 / 2 is 50%?
+
+
+[03/06/2024 13:58] kalinbas
+yes
+
+{Reactions}
+👍 
+
+[03/06/2024 13:59] kalinbas
+why do you mean withdrawing, the amounts are just added to the position multiple times
+
+
+[03/06/2024 14:00] kalinbas
+positionBalances define how much of the contract balances belong to the position
+
+
+[03/06/2024 14:01] kalinbas
+but there is more tokens in the same contract
+
+
+[03/06/2024 14:01] kalinbas
+that belong to other positions or the protocol itself
+
+
+[03/06/2024 14:01] zxriptor
+it is from HYDN report: "Between the storage read of the pending withdrawal balance on the set of the new balance,** malicious users can withdraw**, so the balance goes to zero and at the end of the compounding execution a new pending balance is set with the assumption that the previous pending balance hasn't changed."
+
+
+[03/06/2024 14:02] kalinbas
+withdraw is the wrong word maybe.. they mean "withdraw" from the positionBalances
+
+
+[03/06/2024 14:10] zxriptor
+thank you for your patience and responses, I appreciate it. If you could point out how reentrancy can be realized (assuming there is no nonReentrant modifier)  in the concerned code block, I think that is all I am stuck as of now. thank you
+
+
+[03/06/2024 14:27] kalinbas
+Sorry i was confused, the reentrancy could happen with a forged token and withdrawLeftoverBalances() function, not the execute() function
+
+
+[03/06/2024 14:42] escrow1337
+the way it was described within the report, it does not really seem like reentrancy was the main problem, but rather an extension to a pre-existing problem where the access control is flawed allowing other positions to be collected. so your confusion is definitely not wrong. however, the relevant part to the actual title of that bug, is in the last paragraph starting "Between the storage..."
+
+{Reactions}
+👍 
+
+[03/06/2024 14:42] escrow1337
+their impact arguably concludes 2 bugs rather than just a singular reentrancy
+
+
+[03/06/2024 14:42] kalinbas
+very true good catch
+
+{Reactions}
+👌 
+
+[03/06/2024 14:47] zxriptor
+> however, the relevant part to the actual title of that bug, is in the last paragraph starting "Between the storage..."
+that is where my confusion is. I see no reentrancy but if we consider "flawed" ERC20 then it makes sense though
+
+
+[03/07/2024 01:09] smartcontractprogrammer
+Would this be a valid finding? 
+Unsafe inputs to a function that only the owner can call that can lead to undesired behavior
+
+
+[03/07/2024 02:30] olanre_waju
+QA, all admin/owner are trusted parties!
+
+{Reactions}
+👍 
+
+[03/07/2024 03:38] 0xjuaan
+where is the code for the 'Auto-Leverage' transformer mentioned in the whitepaper?
+
+
+[03/07/2024 03:39] 0xjuaan
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/image-7120B.png
+
+
+[03/07/2024 04:40] Message Wolf#0225 (pinned)
+**Automated Findings / Publicly Known Issues**
+
+Automated findings output for the audit can be found [here](https://github.com/code-423n4/2024-03-revert-lend/blob/main/bot-report.md).
+
+*Note for C4 wardens: Anything included in the automated findings output is considered a publicly known issue and is ineligible for awards.*
+
+{Reactions}
+👍 (2) 
+
+[03/07/2024 06:12] 0xsorrynotsorry
+Pinned a message.
+
+
+[03/07/2024 07:33] alexander_orjustalex
+I can't log in the console with neither console2 or console.
+Anyone facing the same issue or know the fix?
+
+
+[03/07/2024 07:58] kalinbas
+import "forge-std/console.sol";
+
+
+[03/07/2024 07:58] kalinbas
+as much as i know it doesnt work in fuzz tests
+
+
+[03/07/2024 08:43] ali_shehab.
+If you imported it and still having issue add assert(false); at the end of the test
+
+
+[03/07/2024 08:44] guy_in0xnito
+What is the collatarization ratio and liquidation criteria ?
+
+
+[03/07/2024 08:54] alexander_orjustalex
+Worked out. Thank you, sir!
+
+
+[03/07/2024 09:16] web3tycoon
+@kalinbas hello, in AutoExit.sol 
+so there two tokens which we can auto swap to the other during the swapping lets say the current tick cross the lowerr token0 tick should token1 be swapped token0 or vice versa
+just clarification
+
+
+[03/07/2024 09:19] kalinbas
+"the current tick cross the lowerr token0 tick" - when this happens all liquidity will be in token0 - so depending on config position is closed with or without swap. if a swap is done all tokens are swapped to the other token (in this case token1)
+
+
+[03/07/2024 09:19] kalinbas
+check the whitepaper and the _checkLoanIsHealthy() function
+
+
+[03/07/2024 09:33] guy_in0xnito
+Ya i saw the _check...healthy() where it tells if debt<collateral it is not healthy 
+More of  thinking of the ratio ?
+
+Can you tell me where in the docs i can find it ?
+
+
+[03/07/2024 09:37] kalinbas
+its used in the same method: _calculateTokenCollateralFactorX32()
+
+
+[03/07/2024 12:28] youssefabk
+Hi, do anyone know where can I find a mock for the nonfungibleTokenManger ?
+
+
+[03/07/2024 12:47] kalinbas
+Not that i know about but you can build one like here for example. https://github.com/Uniswap/v3-periphery/blob/main/contracts/test/MockTimeNonfungiblePositionManager.sol
+
+
+[03/07/2024 12:48] kalinbas
+Tests use mostly forked mainnet state
+
+
+[03/07/2024 13:16] web3tycoon
+@kalinbas  when testing autoexit.t,sol am getting this evm revert error which seems comes from slot0 
+when trying to execute swap after i have set up config, how did you guys over this ? please
+
+
+[03/07/2024 13:19] web3tycoon
+like when i call execute using swapData its giving me an error even when i pass getDAIToUSDSwapData()
+
+
+[03/07/2024 13:23] web3tycoon
+@kalinbas  in simple terms how can i replicate bytes swapdata without reading from mainnet , that is locally
+
+
+[03/07/2024 14:55] kalinbas
+its because you need to set POOL_INIT_CODE_HASH as described in readme
+
+
+[03/07/2024 14:56] kalinbas
+locally you need to create all uniswap contracts including universalrouter to test this, or you can mock the needed contracts
+
+
+[03/07/2024 14:58] web3tycoon
+ok where do i get the POOL_INIT_CODE_HASH
+
+
+[03/07/2024 15:01] web3tycoon
+ok i see
+
+
+[03/07/2024 15:55] santiellena
+it's on the readme
+
+
+[03/07/2024 15:55] santiellena
+bytes32 internal constant POOL_INIT_CODE_HASH = 0xe34f199b19b2b4f47f68442619d555527d244f78a3297ea89325f843f87b8b54;
+
+
+[03/07/2024 15:56] santiellena
+`lib/v3-periphery/contracts/libraries/PoolAddress.sol` change it here
+
+
+[03/08/2024 03:19] web3tycoon
+gm
+
+
+[03/08/2024 04:05] coffiasd
+@mario | revert.finance  pls check the private channel
+
+{Reactions}
+👍 
+
+[03/08/2024 07:09] kalinbas
+Gm
+
+
+[03/08/2024 09:45] web3tycoon
+@kalinbas just for clarification 
+in Ivault.sol while deacreasing liquidity we remvoe the positions liquidity plus fees and 
+when we call collect we dont remove the position but collect the fees accrued >
+
+
+[03/08/2024 09:48] kalinbas
+for decreasing liquidity it depends what is set in the params. the liquidity parameters says how much to remove from liquidity.. feeAmount0 / feeAmount1 how much from fees
+
+
+[03/08/2024 09:49] kalinbas
+And the sum of these two amounts is "collected" automatically from the NonfungiblePositionManager (if thats what you are asking)
+
+
+[03/08/2024 09:51] kalinbas
+if you set liquidity to 0 and feeAmount0 / feeAmount1 to max value - all fees are collected only
+
+
+[03/08/2024 10:05] web3tycoon
+@kalinbas okay just for clarification what is returned in automator.sol ` _decreaseFullLiquidityAndCollect` for feeAmount its all the fees
+
+
+[03/08/2024 10:05] web3tycoon
+or?
+
+
+[03/08/2024 10:07] kalinbas
+it is all the amounts defined from liquidity parameter + what you specified in feeAmount0 / feeAmount1
+
+
+[03/08/2024 10:07] kalinbas
+so if there is liquidity > 0 and feeAmount0 = 0 / feeAmount1 = 0, only the amounts from the liquidity are returned
+
+
+[03/08/2024 10:08] kalinbas
+better check the code of the _decreaseFullLiquidityAndCollect() function its easier to understand than my text 🙂
+
+
+[03/08/2024 11:17] honour_d_dev
+Hi @kalinbas any particular reason or benefit in Q32 & Q96 based precision calculations over the regular 10**x.
+
+
+[03/08/2024 12:08] santiellena
+Hi! I'm having a hard time understanding the difference between `balance`, `available`, and `reserves` values which are calculated on `V3Vault::_getAvailableBalance`. Do you know any resource where I can read or understand the concepts and why they are calculated that way? Thanks in advance ❤️
+
+
+[03/08/2024 12:10] kalinbas
+balance is just the contracts balance of the asset, available is the part of the balance which is not part of the reserves, and reserves it the amount that must be kept in the contract
+
+{Reactions}
+❤️‍🔥 
+
+[03/08/2024 12:11] kalinbas
+because its the accrued protocol reserves
+
+
+[03/08/2024 12:13] guy_in0xnito
+On which network is it going to get deployed?
+
+
+[03/08/2024 12:15] santiellena
+Ohh awesome, I get it. Thanks!!
+
+
+[03/08/2024 12:21] kalinbas
+arbitrum first
+
+
+[03/08/2024 12:35] kalinbas
+no, not really.. in some places when used for percentages it is practical to be able to use the whole space from 0 to Q32-1
+
+
+[03/08/2024 12:35] kalinbas
+to represent 0% - 99.999999999%
+
+
+[03/08/2024 12:35] kalinbas
+and store it in a uint32
+
+
+[03/08/2024 14:27] web3tycoon
+@kalinbas  hello again, 🙂 
+i cant find autoleverage.sol
+as in the readme
+
+
+[03/08/2024 15:16] kalinbas
+Its called LeverageTransformer.sol, which readme?
+
+
+[03/08/2024 17:59] vikqaz
+really nice code comments, very helpful in understanding the codebase. Very simple test suite integration. Feels really good while auditing such nicely coded protocols. It actually makes the life of auditors easier.
+
+{Reactions}
+💯 (4) 
+
+[03/08/2024 21:33] santiellena
+@kalinbas Hi! How are you expecting to set `globalDebtLimit` and `globalLendLimit`? Are they going to be same amount?  Or `globalLendLimit` could be bigger, for example.
+
+
+[03/08/2024 21:42] jecikzerrikan
+I think the point is to charge more the borrowers than you give to lenders to make some profit
+
+
+[03/08/2024 21:48] santiellena
+Sure, but those variables have nothing to do with profit. They are just limits that the owner sets. `totalSupply()` cannot be bigger than `globalLendLimit` and `debtSharesTotal` cannot be bigger than `_convertToShares(globalDebtLimit, newDebtExchangeRateX96, Math.Rounding.Down)`. I think that those vars are for managing risk in the protocol.
+
+
+[03/08/2024 21:52] jecikzerrikan
+you're right, I didn't read correctly your question. I thought you were refering to the rates. sorry!
+
+
+[03/08/2024 21:53] santiellena
+No problem! Thx for your answer!
+
+
+[03/09/2024 05:26] web3tycoon
+gm
+
+
+[03/09/2024 10:41] donkicha
+Hey!
+
+
+I was wondering how things are going with Slither?
+
+Is it OK to report these bugs?
+
+
+[03/09/2024 10:41] 14si2o_flint
+If they're not in the bot report and you can prove them (slither output is 99% false positive), then sure they're valid.
+
+{Reactions}
+👍 
+
+[03/09/2024 10:57] kalinbas
+Not sure yet, but probably starting with a lower amount and then increasing
+
+
+[03/09/2024 14:22] donkicha
+Someone else got these errors?:
+
+
+```
+donko@DESKTOP-L2NMHUV:~/2024-03-revert-lend$ forge test
+[⠢] Compiling...
+[⠆] Compiling 35 files with 0.8.24
+[⠑] Solc 0.8.24 finished in 11.08s
+Compiler run successful with warnings:
+Warning (2018): Function state mutability can be restricted to view
+   --> test/integration/V3Utils.t.sol:976:5:
+    |
+976 |     function _getPermitBatchTransferFromSignature(
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to view
+    --> test/integration/V3Vault.t.sol:1229:5:
+     |
+1229 |     function _getPermitTransferFromSignature(
+     |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Running 2 tests for test/integration/InterestRateModel.t.sol:InterestRateModelIntegrationTest
+[PASS] testInterestRates() (gas: 20003)
+[PASS] testUtilizationRates() (gas: 7976)
+Test result: ok. 2 passed; 0 failed; 0 skipped; finished in 14.16ms
+2024-03-09T14:19:55.370675Z ERROR sharedbackend: Failed to send/recv `storage` err=failed to get storage for 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48 at 92685732499217112537728364497455353390228068218818402449399870467442159352531: Deserialization Error: invalid type: null, expected u64 at line 1 column 26. Response: {"jsonrpc":"2.0","id":null,"error":{"message":"rate limit exceeded","data":"You’re using more requests than are allowed in your plan. Register to upgrade it for FREE  https://www.ankr.com/rpc/?banner=register","code":-31999}} address=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48 index=92685732499217112537728364497455353390228068218818402449399870467442159352531
+
+```
+
+
+[03/09/2024 14:38] oceansky
+you need to replace the rpc line 63
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/image-3F571.png
+
+
+[03/09/2024 14:40] oceansky
+there are several files needed to be replace by valid url coming from infura or alchemy. Do you have account on any of these?
+
+
+[03/09/2024 14:41] vikqaz
+balance == available + reserves ??
+
+
+[03/09/2024 15:05] kalinbas
+Yes
+
+{Reactions}
+👍🏻 
+
+[03/09/2024 16:27] web3tycoon
+@kalinbas  in v3Utils.sol is it compulsory for liquidity providiers who have taken out a loan from revert lend or anyone can call the as long as they have uniswapv3 nfts
+
+
+[03/09/2024 16:52] kalinbas
+it can be called also without a loan
+
+
+[03/09/2024 16:52] kalinbas
+directly
+
+
+[03/09/2024 17:07] kirobrejka_80610
+deployment on Ethereum L1, right?
+
+
+[03/09/2024 17:07] kirobrejka_80610
+@kalinbas
+
+
+[03/09/2024 17:08] kalinbas
+arbitrum l2 first
+
+{Reactions}
+👍 
+
+[03/09/2024 17:09] vikqaz
+@kalinbas unable to find natspec or docs for this parameter. Am I missing anything?
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/Screenshot_2024-03-09_at_10.06.51_PM-069EC.png
+
+
+[03/09/2024 17:09] ilchovski
+is it just me or half of the tests are failing?
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/Screenshot_2024-03-09_at_19.08.33-B7924.png
+
+
+[03/09/2024 17:10] vikqaz
+update the mainnet RPC url
+
+
+[03/09/2024 17:11] kalinbas
+and changing the pool_init_hash as described in the readme
+
+{Reactions}
+👍 (2) 
+
+[03/09/2024 17:14] ilchovski
+i missed that part, thank you
+
+
+[03/09/2024 18:57] santiellena
+it's just a parameter used to force the reset when new limits are set
+
+
+[03/10/2024 07:20] donkicha
+Someone tried to debug the code?
+
+
+[03/10/2024 07:45] donkicha
+I have an acount on Alchemy, but how to get such URL?
+
+
+[03/10/2024 08:41] vikqaz
+you may reduce the runs, if it fits to your testing criteria
+
+
+[03/10/2024 08:58] oceansky
+follow this guide https://medium.com/alchemy-api/getting-started-with-ethereum-development-using-alchemy-c3d6a45c567f, research more about API key
+
+{Embed}
+https://medium.com/alchemy-api/getting-started-with-ethereum-development-using-alchemy-c3d6a45c567f,
+
+
+[03/10/2024 09:23] wanziskata
+I think he meant that you should create a new app in alchemy, on the ethereum mainnet specifically, then just grab the rpc url and use it for further testing 🤝
+
+
+[03/10/2024 10:10] nmirchev8
+So the protocol is planned to only be deployed on Arbitrum?
+
+
+[03/10/2024 10:43] senyab
+Hi 👋  Could someone explain the difference between fees0/fees1 and feeValue?
+
+
+[03/10/2024 11:08] 0xbtk
+The protocol should be able to be deployed on any EVM compatible chain - by using chain specific config values
+
+{Reactions}
+✅ (2) 
+
+[03/10/2024 17:27] kalinbas
+Fees0 and fees1 are the amount of token0 and token1 of the fees - value is the sum of both fees0 and fees1 but the value in the given asset token
+
+{Reactions}
+🔥 
+
+[03/11/2024 01:22] kennedybailey
+Are operators trusted in this protocol?
+
+
+[03/11/2024 07:12] kalinbas
+They are partially trusted (and run by Revert) because they can decide how the offchain calculated swaps are calculated. But the protocol protects the positions by letting owners define max slippage/price impact.
+
+
+[03/11/2024 07:14] kalinbas
+Also there is an TWAP oracle used to protect from sandwich attacks trying to game the slippage protection.
+
+
+[03/11/2024 07:16] kennedybailey
+Tkank you very much.
+
+
+[03/11/2024 08:46] web3tycoon
+gm
+
+
+[03/11/2024 09:03] kalinbas
+gm!
+
+
+[03/11/2024 10:15] senyab
+gm!
+
+
+[03/11/2024 10:19] senyab
+Could smone help me to understand it. How exacty the tokenId could be changed in the meantinme(during the transform function), if in the blockchain all tx are executed in order.
+```
+// may have changed in the meantime
+        tokenId = transformedTokenId;
+```
+
+
+[03/11/2024 10:20] kalinbas
+hm there is a callback before this line.. the line (bool success,) = transformer.call(data);
+
+
+[03/11/2024 10:21] kalinbas
+calls the transformer contract which may send a new token to the vault in the meantime
+
+
+[03/11/2024 10:21] kalinbas
+which would call onERC721Received
+
+
+[03/11/2024 10:21] kalinbas
+and this function can update the transformedTokenId
+
+
+[03/11/2024 18:16] ivanfitro
+hey! What is _zeroxRouter?
+
+
+[03/11/2024 19:02] kalinbas
+its the contract from 0x which recieves instructions and does a swap using offchain calculated swap using the API of 0x
+
+{Reactions}
+👍 
+
+[03/11/2024 21:57] y0ng0p3
+Hey @kalinbas @mario | revert.finance. If I may ask, would anything (an external parties) integrate with the V3Vault?
+
+
+[03/11/2024 22:22] kalinbas
+Not planned for now but with the ERC4626 it could be probable
+
+{Reactions}
+👍 
+
+[03/12/2024 05:43] web3tycoon
+hey @kalinbas  to test v3Oracle must you fork it
+
+
+[03/12/2024 05:44] web3tycoon
+how can i test locally
+
+
+[03/12/2024 07:23] kalinbas
+What do you want to test? Create mocks for all the dependencies?
+
+
+[03/12/2024 07:51] senyab
+@kalinbas does LeverageTransformer stores the fund?
+
+
+[03/12/2024 08:35] kalinbas
+No, it shouldn't store anything
+
+
+[03/12/2024 13:54] jacobmartin0406
+@kalinbas Can I DM you, sir?
+
+
+[03/12/2024 13:55] jacobmartin0406
+There is no button for pvt in this channel. 🤔
+
+
+[03/12/2024 13:59] kalinbas
+yes of course
+
+
+[03/12/2024 14:04] 14si2o_flint
+Click the + button left of the chatbot and you can create a private thread.
+
+
+[03/12/2024 14:12] jacobmartin0406
+Really? Ty, sir
+
+
+[03/12/2024 16:17] hermit319
+anyone know how to fix this error?
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/image-D4520.png
+
+
+[03/12/2024 17:21] mike_bello90
+check the file exist in the path mentioned
+
+{Reactions}
+👍 
+
+[03/12/2024 18:44] kalinbas
+if seems you didnt install the dependencies with "forge install"
+
+
+[03/12/2024 18:45] kalinbas
+forge test should do this automatically.. so something seems wrong
+
+{Reactions}
+👍 
+
+[03/12/2024 20:31] vikqaz
+@kalinbas what does this line mean plz?
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/Screenshot_2024-03-13_at_1.29.45_AM-BB79E.png
+
+
+[03/12/2024 20:34] kalinbas
+ah its just to know the state of the position at the point in time of the forked state of mainnet
+
+
+[03/12/2024 20:56] vikqaz
+What do you mean by state? I mean 0.05% of what? is this return to LPs?
+
+
+[03/12/2024 20:56] kalinbas
+no its a position with 0.05% fee tier
+
+
+[03/12/2024 21:53] hermit319
+I tried several times to install
+So it seems that this issue is only on my side in the installation process.
+
+
+[03/12/2024 22:35] mike_bello90
+in the v3utils contract the "targetToken" variable in the instruction struct is the token we want to get??
+
+
+[03/12/2024 22:36] mike_bello90
+for example if we want to swap from eth to usdc, the target token would be usdc?
+
+
+[03/13/2024 07:20] web3tycoon
+@kalinbas  are this two equal `oldDebtExchangeRateX96, oldLendExchangeRateX96`
+
+
+[03/13/2024 07:50] alix40
+Nope, there is a reserve factor used in between, so in most cases debtexchangerate should be bigger ( borrow interest rate is bigger than the supply interest rate some of the difference get set as reserves for the protocol that they can withdraw)
+
+
+[03/13/2024 08:00] kennedybailey
+What is the meaning of this protocol's name-"revert-lend"?
+
+
+[03/13/2024 08:43] jecikzerrikan
+yeah, but actually the difference between the debtExchangeRate and lendExchangeRate doesn't matter, what matters is that the debtExchangeRate is accruing faster than the lendExchangeRate.
+
+
+[03/13/2024 08:54] guy_in0xnito
+I have two questions
+1. How does the protocol transform (not the types of transform) the position is this the reason flashloan is used ?
+2. How does automator come into the context?
+@kalinbas  pinning this up
+
+
+[03/13/2024 09:25] vikqaz
+How can `debtExchangeRate` accrue faster than `lendExchangeRate`?
+
+
+[03/13/2024 09:26] vikqaz
+thanks 🙌🏻
+
+
+[03/13/2024 09:29] jecikzerrikan
+have a look at the InterestRateModel.getRatesPerSecond() it calculates both per second values for debt and exchange rate (they are called there differently - borrowRate (for debt) and supplyRate (for lend), supplyRate is de facto borrowRate multiplied by the utilisationRate, which is always below 1. So it is always smaller than borrowRate
+
+{Reactions}
+👍 thankyou (2) 
+
+[03/13/2024 18:23] santiellena
+@kalinbas Hi! Would you mind explaining how `V3Utils.sol` is going to interact/integrate with the system?
+
+
+[03/13/2024 18:33] kalinbas
+Users call the transform method on the vault (where their position is stored ) and setting v3utils as transformer and the desired instructions in the data
+
+{Reactions}
+👌 
+
+[03/13/2024 23:32] guy_in0xnito
+.
+
+
+[03/14/2024 05:37] jacobmartin0406
+Started a thread.
+
+
+[03/14/2024 10:46] kalinbas
+1. transform means when a position is in vault, it may be changed, temporarely ignoring collateralization requirements and only at the end of tx it is checked (similar to a flash loan)
+
+
+[03/14/2024 10:48] kalinbas
+2. Automators are contracts which have the permission to Automate certain actions for approved positions. This works with standalone positions but also with positions in vault (and thats where transform method comes into play)
+
+
+[03/14/2024 15:53] jecikzerrikan
+Hi @kalinbas, the referenceToken and chainLinkReferenceTokens, are they supposed to be different from the asset token?
+
+
+[03/14/2024 15:55] kalinbas
+They are independent.
+
+
+[03/14/2024 15:55] kalinbas
+chainLinkReferenceTokens is the other token in chainlink feed (usually USD or ETH)
+
+
+[03/14/2024 15:55] kalinbas
+referenceToken is the other token in TWAP pairs usually WETH or USDC
+
+
+[03/14/2024 15:55] kalinbas
+asset probably will be USDC or DAI
+
+
+[03/14/2024 16:00] jecikzerrikan
+I see, so if the Asset of the Vault is, let's say USDC, the Oracle's reference token is WETH, and the collateral we need the price of is LINK, then Chainlink will calculate the price as: (USDC/WETH) / (LINK/WETH). Is this correct?
+
+
+[03/14/2024 16:07] kalinbas
+Yeah..
+
+{Reactions}
+👍 
+
+[03/14/2024 20:03] sp1cymeatball
+@kalinbas hey! What's the difference between referenceToken and chainlinkReferenceToken in the oracle contract?
+
+
+[03/14/2024 20:21] kalinbas
+One is the common token used in chain link feeds like eth in  BTC/eth and dai/eth the other one the common token in TWAP pools
+
+{Reactions}
+thankyou 
+
+[03/15/2024 07:09] web3tycoon
+gm final day
+
+
+[03/15/2024 07:45] kalinbas
+Gm!
+
+
+[03/15/2024 07:59] jecikzerrikan
+this is it boys!
+
+
+[03/15/2024 11:36] 0xgreywolf
+Hi @kalinbas. Are borrowing positions transferrable? If yes, how does it work?
+
+
+[03/15/2024 11:38] kalinbas
+No they are not transferrable
+
+{Reactions}
+👍 
+
+[03/15/2024 11:38] 0xgreywolf
+All right, thank you.
+
+
+[03/15/2024 15:30] 0xdemonnn
+Have a question on PT, please check. Thank you @kalinbas
+
+
+[03/15/2024 20:02] C4
+**🚨 AUDIT ALERT**
+
+@🐺Wardens The **Revert Lend** audit is now closed! Huge thanks to everyone who participated 🔍, whether you submitted a finding or not.
+
+What's next: The sponsor team and judge will review the findings over the next couple of weeks. Keep an eye on #📢announcements for regular updates on how the audit is progressing through awarding 🤑🏆, judging 🧑‍⚖️ and reporting 📜. Feel free to ping a Contest-Admin if you have questions along the way!
+
+
+[03/15/2024 20:15] kalinbas
+Thanks to everyone for the interesting week! 🙏 Looking forward to see the findings.
+
+{Reactions}
+❤️ (14) 
+
+[03/15/2024 20:34] johnsmith1623
+This was very satisfying contest. 
+It is big and scary, but code and whitepaper are actually very readable and @kalinbas helped a lot.
+Gonna enjoy now reading all the crazy exploits you guys came up with.
+
+{Reactions}
+thankyou (2) 💯 
+
+[03/15/2024 23:47] oceansky
+Many Thanks to the Revert sponsors ,  I now know how to use flashloan in liquidation 😅
+
+
+[03/16/2024 08:11] alix40
+How many H/M submissions?
+
+
+[03/16/2024 08:13] kaveyjoe
+Total submission 504
+
+{Reactions}
+❤️ (7) 👍 (5) 
+
+[03/16/2024 08:27] alix40
+Was a fun competition, wish the best for the sponsors and the participants!
+
+
+[03/30/2024 01:58] 0xjuaan
+for people with the backstage role, how’s the judging progress looking?
+
+
+[03/30/2024 07:30] haxatron1
+Still sponsor review. Have not reached judging
+
+{Reactions}
+😨 
+
+[03/30/2024 07:37] 0xjuaan
+oh ok
+
+
+[03/30/2024 07:38] 0xjuaan
+do sponsors contribute to judging? i thought sponsors would be looking at submissions after judges get rid of the invalid ones
+
+
+[03/30/2024 07:38] kirobrejka_80610
+encouraging
+
+{Reactions}
+❓ 
+
+[03/30/2024 07:39] kirobrejka_80610
+with this pace we may see some result till the end of the year💀 😂
+
+{Reactions}
+😂 
+
+[03/30/2024 07:41] haxatron1
+So how it works is:
+1. Lookout will sort the invalid issues
+2. Sponsor will review the issues and confirm or dispute it
+3. Judge will come in and determine issue validity and severity
+4. PJQA where backstage wardens can give their input
+
+
+[03/30/2024 07:44] 0xjuaan
+oh ok
+
+
+[03/30/2024 07:44] 0xjuaan
+do c4 judges not review all submissions then?
+
+
+[03/30/2024 07:47] haxatron1
+Yes c4 judge will still review all submissions
+
+
+[03/30/2024 11:48] 0xjuaan
+oh ok thats good
+
+
+[03/31/2024 08:25] olanre_waju
+tbh🤣  hopefully before chritsmas. Judging is super fast 🚀
+
+{Reactions}
+❤️ 
+
+[03/31/2024 08:27] olanre_waju
+Who is the judge pls?
+
+
+[03/31/2024 10:02] haxatron1
+Ser u have backstage, no need to ask 😂
+
+
+[04/03/2024 01:51] jacobmartin0406
+wen result?
+
+
+[04/03/2024 02:09] tayzver
+This year probably (I think next week but I’m not sure)
+
+{Reactions}
+😂 (6) 🧐 (2) 
+
+[04/03/2024 17:09] xyzbtchunt
+Any update?
+
+
+[04/03/2024 17:48] auditor_79099
+when result?
+
+
+[04/03/2024 19:47] olanre_waju
+Still in PJQA stage.
+
+PJQA is to review Judging and to ensure correctness. It ends tomorrow,  after which C4 team will finalize and publish result, usually few days(week days) after PJQA is done.
+
+{Reactions}
+👍 (2) 
+
+[04/04/2024 06:02] alix40
+Loved reading the reports u guys came up with. Really creative stuff!
+
+{Reactions}
+10_10 thankyou (2) 
+
+[04/04/2024 08:09] tigerfrake
+Yea?
+
+
+[04/04/2024 09:50] 0xjuaan
+How many H/M as of now?
+
+
+[04/04/2024 20:56] thank_you_
+I discovered an invalid bug that is currently considered valid by the judges. What recourse do I have right now?
+
+UPDATE: posted comment in issue in hopes that judges will be able to respond. Apologizes if I missed the comment window.
+
+
+[04/04/2024 21:39] xyzbtchunt
+pjqa finish?
+
+
+[04/04/2024 21:41] olanre_waju
+Yes
+
+
+[04/05/2024 09:52] web3tycoon
+now we wait for the results today or
+
+
+[04/05/2024 10:50] 0xdemonnn
+i hope so
+
+
+[04/05/2024 11:44] xyzbtchunt
+Wen?
+
+
+[04/05/2024 12:04] 0xjuaan
+backstage people, is it possible to say?
+
+
+[04/05/2024 12:19] alix40
+169 submissions are  marked as eligible for rewards (with qa and analysis)
+
+{Reactions}
+👀 (7) 
+
+[04/05/2024 14:47] web3tycoon
+yoooh cant wait
+
+
+[04/05/2024 20:32] mike_bello90
+If I'm not mistaken, I think you're gonna be one of the big winners man
+
+{Reactions}
+🔥 (5) 
+
+[04/05/2024 20:42] ali_shehab.
+results Monday right? or next week
+
+
+[04/05/2024 20:50] mike_bello90
+yea maybe Monday
+
+
+[04/05/2024 21:10] xyzbtchunt
+hopefully now
+
+
+[04/05/2024 21:13] santiellena
+lol, juan is rocking it
+
+{Reactions}
+💯 (2) 
+
+[04/05/2024 23:58] 0xjuaan
+thanks now i'm way more impatient hahaha
+
+{Reactions}
+😂 
+
+[04/06/2024 05:30] web3tycoon
+this was my first contest, i will feel so good if i got any valid man❤️
+
+
+[04/07/2024 22:26] xyzbtchunt
+Any update?
+
+
+[04/08/2024 05:42] linmiaomiao_qaq
+Any update?
+
+
+[04/08/2024 06:19] novamanbg
+you have backstage😂
+
+
+[04/08/2024 07:15] 0x11singh99
+today
+
+{Reactions}
+🫡 (8) 
+
+[04/08/2024 09:01] linmiaomiao_qaq
+I just want to query the result,it is in PJQA stage for 6 days
+
+{Reactions}
+🫡 
+
+[04/08/2024 09:17] 0xauditism
+yeah but there was the weekend in between
+
+
+[04/08/2024 09:17] 0xauditism
+I am sure they are doing their best
+
+
+[04/08/2024 09:20] 0xjuaan
+🙏
+
+
+[04/08/2024 09:31] guy_in0xnito
+I think it's upto c4 ppl now when they publish it
+
+
+[04/08/2024 10:11] 14si2o_flint
+Everything is numbered & ready so, shouldn't be much longer. Normally today.
+
+
+[04/08/2024 10:14] guy_in0xnito
+Backstage ppl can see the rewards amt also ?
+
+
+[04/08/2024 10:14] 14si2o_flint
+No, just that they added the tags that means everything is ready.
+
+
+[04/08/2024 13:56] olanre_waju
+As you a can see, its been only 3weeks since the completion of this contest.
+
+Judge and lookout have been really fast to have completed judging the contest in such a short period. Normally, it takes an average of 4weeks, so we are not in delay yet, we should exercise patience 😉 
+
+It's done already,  you'll be served soon🤣🤣🤣
+
+{Reactions}
+❤️ (8) thankyou (2) 
+
+[04/08/2024 15:42] thebrittfactor
+We're hoping to get these announced early this week 🙂
+
+{Reactions}
+🫡 (14) 🔐 (6) 
+
+[04/09/2024 13:01] xyzbtchunt
+https://tenor.com/view/discord-yeux-gros-ye-eye-gif-18216867
+
+{Embed}
+https://tenor.com/view/discord-yeux-gros-ye-eye-gif-18216867
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/discord-yeux-1CFF9.png
+
+{Reactions}
+😂 (7) 
+
+[04/09/2024 13:41] 0xjuaan
+surely tonight
+
+{Reactions}
+4739_Skeletor (7) 
+
+[04/10/2024 07:19] 14si2o_flint
+https://tenor.com/view/soon-tm-soon-space-gif-23401891
+
+{Embed}
+https://tenor.com/view/soon-tm-soon-space-gif-23401891
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/soon-tm-soon-16B89.png
+
+{Reactions}
+😂 (4) 
+
+[04/10/2024 07:44] kirobrejka_80610
+U r killin me guys😂 😭
+
+
+[04/10/2024 07:56] 0x11singh99
+Why it is taking so time in just reward calculate and announcement 😢
+
+
+[04/10/2024 08:22] novamanbg
+the rewards are so big that it is difficult to do such complex calculations
+
+{Reactions}
+❤️ (2) 😂 (3) 
+
+[04/10/2024 08:33] 0xauditism
+they are overflowing
+
+{Reactions}
+❤️ (3) 😂 
+
+[04/10/2024 08:51] 0xjuaan
+surely tonight
+
+{Reactions}
+💀 (4) 
+
+[04/10/2024 08:58] web3tycoon
+am 8 hours ahead of the usa so am buried💀
+
+
+[04/10/2024 09:22] xyzbtchunt
+https://tenor.com/view/harry-kane-shhh-footballer-gif-17936295
+
+{Embed}
+https://tenor.com/view/harry-kane-shhh-footballer-gif-17936295
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/harry-kane-shhh-22E9E.png
+
+{Reactions}
+😂 (2) 
+
+[04/10/2024 12:30] 0xdemonnn
+https://tenor.com/view/waiting-waiting-patiently-waiting-for-you-waiting-on-you-gif-15489516379864441176
+
+{Embed}
+https://tenor.com/view/waiting-waiting-patiently-waiting-for-you-waiting-on-you-gif-15489516379864441176
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/waiting-waiting-patiently-C8F8A.png
+
+
+[04/10/2024 13:48] thebrittfactor
+Just noting we have run into a minor issue with awardcalc. Our devs are looking into the issue and we will announce as soon as we can.
+
+{Reactions}
+thankyou (6) 
+
+[04/10/2024 13:53] 0xjuaan
+you were right
+
+{Reactions}
+❤️ (3) 😂 (2) 
+
+[04/10/2024 14:00] novamanbg
+I could help with the reward calculations if the calc is broken😁
+
+{Reactions}
+😂 (3) 
+
+[04/10/2024 14:10] johnsmith1623
+https://tenor.com/view/osita-osita-iheme-nigerian-nollywood-calculating-gif-16142281
+
+{Embed}
+https://tenor.com/view/osita-osita-iheme-nigerian-nollywood-calculating-gif-16142281
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/osita-osita-iheme-A954D.png
+
+
+[04/10/2024 15:24] xyzbtchunt
+https://tenor.com/view/calculation-cat-gif-26041269
+
+{Embed}
+https://tenor.com/view/calculation-cat-gif-26041269
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/calculation-cat-D1D4E.png
+
+{Reactions}
+😂 
+
+[04/10/2024 15:55] 14si2o_flint
+$0 + $0 = $0 reward calc done 😄
+
+{Reactions}
+4739_Skeletor (7) 
+
+[04/10/2024 18:29] timenov
+Results are in profiles
+
+
+[04/10/2024 18:45] web3tycoon
+and where is that
+
+
+[04/10/2024 18:53] novamanbg
+?
+
+
+[04/10/2024 18:53] ali_shehab.
+He means profiles are updated
+
+
+[04/10/2024 18:53] 0xauditism
+Only for the certieds
+
+{Reactions}
+🫡 
+
+[04/10/2024 18:53] 0xauditism
+you can see little icons
+
+
+[04/10/2024 18:54] 0xauditism
+And revert has been added
+
+
+[04/10/2024 18:54] novamanbg
+so I cannot see
+
+{Reactions}
+4739_Skeletor (3) 
+
+[04/10/2024 19:08] tigerfrake
+Sure thing.
+
+
+[04/10/2024 19:13] 14si2o_flint
+really where? I don't see revert on my profile
+
+
+[04/10/2024 19:17] 0xauditism
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/revert-3ADCC.png
+
+
+[04/10/2024 19:21] 14si2o_flint
+ah yes I needed to activate that
+
+
+[04/10/2024 19:21] 14si2o_flint
+yup got it aswell
+
+
+[04/10/2024 19:21] 14si2o_flint
+then we should get  the official news soon
+
+{Reactions}
+🙏 (3) 
+
+[04/10/2024 19:26] kirobrejka_80610
+.
+
+
+[04/10/2024 19:30] novamanbg
+how did you activate it?
+
+
+[04/10/2024 19:30] 14si2o_flint
+Y in profile settings
+
+
+[04/10/2024 19:31] novamanbg
+hmmm dont see it probably because i dont have backstage
+
+
+[04/10/2024 19:39] tayzver
+You have to do the kyc to be able to modify your profile i think
+
+{Reactions}
+code4rena (2) 
+
+[04/10/2024 19:51] tigerfrake
+Yea it's the only way.
+Pass kyc, get the `certified` tag and you can modify it
+
+
+[04/10/2024 20:04] thebrittfactor
+https://tenor.com/view/stay-calm-gif-23331870
+
+{Embed}
+https://tenor.com/view/stay-calm-gif-23331870
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/stay-calm-DDF2E.png
+
+{Reactions}
+😂 (9) 
+
+[04/10/2024 20:05] thebrittfactor
+Apologies for the delay y'all! 
+
+🤑 🎉  Awards for **Revert**:
+
+$6,184.78 USDC » @b0g0
+$3,697.86 USDC » @0xjuan
+$3,684.15 USDC » @comradeKtg
+$2,883.87 USDC » @CodeCipher
+$2,564.07 USDC » @thank_you
+$1,620.06 USDC » @cryptphi
+$1,456.82 USDC » @auditism
+$1,398.31 USDC » @lanrebayode77
+$1,317.99 USDC » @Bauchibred
+$1,303.31 USDC » @grearlake
+$1,247.36 USDC » @0xCinghiale
+$943.63 USDC » 0xAlix2 (@a_kalout, @ali_shehab)
+$838.82 USDC » @santiellena
+$791.02 USDC » @Auditor
+$765.55 USDC » @Arz
+$760.12 USDC » @14si2o_Flint
+$742.93 USDC » @novamanbg
+$737.08 USDC » @kodyvim
+$727.09 USDC » @iamandreiski
+$715.48 USDC » @0xPhantom
+$713.13 USDC » @JCN
+$691.33 USDC » @kennedy1030
+$594.73 USDC » DanielArmstrong
+$560.57 USDC » @KupiaSec
+$560.21 USDC » @VAD37
+$527.39 USDC » @invitedtea
+$527.39 USDC » @popeye
+$527.39 USDC » @yongskiws
+$463.91 USDC » @Alix40
+$440.80 USDC » @Timenov
+$422.35 USDC » @t4sk
+$418.69 USDC » @CaeraDenoir
+$415.34 USDC » @ayden
+$398.02 USDC » ArsenLupin
+$398.02 USDC » @Tigerfrake
+$398.02 USDC » @jesusrod15
+$366.05 USDC » @deepplus
+$360.22 USDC » @0x11singh99
+$330.24 USDC » @CRYP70
+$281.44 USDC » @shaka
+$269.18 USDC » @InAllHonesty
+$269.18 USDC » @SM3_SS
+$269.18 USDC » @dharma09
+$224.47 USDC » @atoko
+$205.34 USDC » @Norah
+$193.61 USDC » @hunter_w3b
+$190.93 USDC » @kfx
+
+{Reactions}
+❤️ (8) thankyou (3) 🥹 (2) 
+
+[04/10/2024 20:06] thebrittfactor
+$184.23 USDC » @linmiaomiao
+$162.20 USDC » @y0ng0p3
+$140.43 USDC » @0xspryon
+$133.39 USDC » JecikPo
+$112.78 USDC » @SpicyMeatball
+$102.40 USDC » @Topmark
+$92.11 USDC » @befree3x
+$92.11 USDC » @pynschon
+$83.05 USDC » @K42 Ψ
+$83.05 USDC » @Sathish9098
+$72.54 USDC » 0xk3y
+$72.54 USDC » @Mike_Bello
+$72.54 USDC » @myd8418
+$72.54 USDC » @Isaac
+$72.54 USDC » @th3l1ghtd3m0n
+$70.66 USDC » @JohnSmith
+$64.63 USDC » @Jnforja
+$61.28 USDC » @btk
+$49.39 USDC » @MohammedRizwan
+$48.75 USDC » @BowTiedOriole
+$47.52 USDC » @0xAnah
+$47.52 USDC » @0xhacksmithh
+$47.52 USDC » @SAQ
+$46.11 USDC » @wangxx2026
+$44.18 USDC » @0x175
+$42.78 USDC » @Arabadzhiev
+$42.78 USDC » @Bigsam
+$42.78 USDC » @adeolu
+$42.78 USDC » @tpiliposian
+$42.78 USDC » @zaevlad
+$35.41 USDC » @crypticdefense
+$30.96 USDC » @givn
+$28.79 USDC » @0xDemon
+$25.12 USDC » @Silvermist
+$24.06 USDC » @Limbooo
+$21.85 USDC » @erosjohn
+$20.67 USDC » @kinda_very_good
+$20.67 USDC » @nmirchev8
+$17.32 USDC » 0rpse
+$17.32 USDC » @0xBugSlayer
+$17.32 USDC » @0xloscar01
+$17.32 USDC » @Ali-_-Y
+$17.32 USDC » @Ocean_Sky
+$17.32 USDC » @nnez
+$17.32 USDC » @stackachu
+$13.23 USDC » @Fitro
+$10.29 USDC » @0xGreyWolf
+$10.29 USDC » @n1punp
+$10.29 USDC » @Stonejiajia
+$6.61 USDC » @0xblackskull
+$6.61 USDC » @MSaptarshi
+$6.61 USDC » @boredpukar
+$6.61 USDC » @maxim371
+
+{Reactions}
+🚀 
+
+[04/10/2024 20:06] thebrittfactor
+$3.35 USDC » AMOW
+$3.35 USDC » @alexander_orjustalex
+$3.35 USDC » web3Tycoon
+$3.35 USDC » @zxriptor
+
+🏁 Findings summary
+-------------------------------------
+High risk findings: 6 unique (42 total)
+Med risk findings: 25 unique (131 total)
+Gas reports: 7 (Best: 0x11singh99)
+QA reports: 43 (Best: Bauchibred)
+Advanced analysis reports: 8 (Best: 14si2o_Flint)
+
+Awards will be distributed on Polygon within the next week. Congratulations all!  💸 💸 💸
+
+*Note: If you participated in this audit and don’t see your name on this list, please wait until the report is published and the findings repo is made public to check on your submissions.*
+
+
+[04/10/2024 20:07] 14si2o_flint
+🎉 🎉
+
+{Reactions}
+💪 (3) 🫡 (2) 
+
+[04/10/2024 20:08] 0xhacksmithh
+Congratulations sir
+
+{Reactions}
+🙏 
+
+[04/10/2024 20:10] inallhonesty_
+Also @0xjuan destroyed it! GG brother! 🚀
+
+{Reactions}
+👍 
+
+[04/10/2024 20:12] tayzver
+Ggs
+
+
+[04/10/2024 20:16] santiellena
+lol first 3 digits payout!
+
+
+[04/10/2024 20:17] santiellena
+congrats to all the other auditos!! you rock
+
+
+[04/10/2024 20:18] 0xb0g0
+The grind is finally worth it🤯
+
+{Reactions}
+🔥 (7) 
+
+[04/10/2024 20:18] 0xb0g0
+Congrats to everyone else🔥
+
+{Reactions}
+🎉 (13) 
+
+[04/10/2024 20:22] 0xspryon
+Congrats @0xjuan
+
+
+[04/10/2024 20:27] deadrosesxyz
+@14si2o_Flint LET'S GOOO FLINTTT
+
+
+[04/10/2024 20:27] babazero
+Congratulations All🫡
+
+
+[04/10/2024 20:28] nonseodion
+Congratulations @b0g0
+
+
+[04/10/2024 20:28] 14si2o_flint
+tyty 🙂  happy  i won analysis
+
+{Reactions}
+❤️ 
+
+[04/10/2024 20:29] 0xb0g0
+🙏
+
+
+[04/10/2024 20:30] 0xsl1
+congrats @14si2o_Flint, it’s good to see you climbing the leaderboard
+
+{Reactions}
+🙏 
+
+[04/10/2024 20:53] 14si2o_flint
+@web3Tycoon congratz on your first win! It might not seem much, but winning anything on your first contests is very impressive!
+
+{Reactions}
+👏 (4) 
+
+[04/10/2024 21:09] tigerfrake
+Same here pal. Means alot
+
+{Reactions}
+❤️ (2) 
+
+[04/10/2024 21:30] santiellena
+congrats!
+
+
+[04/10/2024 21:36] oceansky
+Congrats to everyone!
+
+
+[04/10/2024 22:25] 0xpopeye
+Bogo & @0xjuan 🔥🔥🔥
+
+
+Happy for you guys, keep rocking
+
+
+[04/10/2024 22:53] 0xjuaan
+GG everyone, and thanks
+
+
+[04/10/2024 23:20] 0xjuaan
+i can't see which findings were validated, is that normal? this is in the findings tab
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/image-2224E.png
+
+
+[04/11/2024 00:32] thank_you_
+You should be eligible for backstage now. If you apply for backstage you should be able to view the backstage repo to see which ones were validated.
+
+
+[04/11/2024 00:39] 0xjuaan
+don't i need 3 contests to be backstage?
+
+
+[04/11/2024 01:01] kaveyjoe
+1H/3M or A grdae on QA/Gas/Analysis
+
+
+[04/11/2024 01:05] 0xjuaan
+the docs also say 'Submit valid findings to at least 3 Code4rena audits'
+
+{Reactions}
+10_10 
+
+[04/11/2024 01:07] kaveyjoe
+
+
+{Attachments}
+Code4rena - ARCHIVE-Q1-2024 - revert-mar04 [1211733312561741824].txt_Files/IMG_7450-DFA49.png
+
+{Reactions}
+👍 
+
+[04/11/2024 01:07] santiellena
+Ok then I need one more audit🥲
+
+
+[04/11/2024 01:22] mctoady
+Nice one @0xjuan!
+
+{Reactions}
+🫡 
+
+[04/11/2024 01:27] auditor_79099
+Congratulations @b0g0
+
+
+[04/11/2024 03:55] coffiasd
+not bad
+
+
+[04/11/2024 04:48] web3tycoon
+thanks😭
+
+
+[04/11/2024 05:15] 0xbogan
+Is there a way to look at judges report to see why some of my findings didn't get anything or were invalid?
+
+
+[04/11/2024 05:20] praise95
+@lanrebayode77 congratulations 🎉🎉
+
+@Mike_Bello congratulations 🎉 🎉
+
+Congratulations to everyone 🎉
+
+{Reactions}
+🔥 (3) 
+
+[04/11/2024 06:16] jecikzerrikan
+Congrats everyone!
+
+
+[04/11/2024 06:17] 0xb0g0
+Thank you, very much!
+
+
+[04/11/2024 06:33] 0xb0g0
+Are we allowed to share the results, or should we wait for Code4Rena announcement first
+
+
+[04/11/2024 06:52] 14si2o_flint
+The $? yes that's public. The findings? nope they remain private until the report has come out.
+
+
+[04/11/2024 07:19] 0xb0g0
+Yes I mean the $. 
+
+Thank you @14si2o_Flint ! You rock🪨  - like literally😂
+
+{Reactions}
+👊 (2) 
+
+[04/11/2024 07:35] olanre_waju
+Thanks 😊
+
+{Reactions}
+🫡 (3) 
+
+[04/11/2024 07:56] jecikzerrikan
+I think you can share at least the amount of H/M you found
+
+{Reactions}
+👍 
+
+[04/11/2024 08:02] inallhonesty_
+https://code4rena.com/@0xjuan hover the red+yellow lines on the right side
+
+
+[04/11/2024 09:59] jecikzerrikan
+Anyone knows why I don’t have the @ sign before my nick in the list above?
+
+
+[04/11/2024 11:01] norah7603
+something with your discoid Id submission on c4 database.
+
+
+[04/11/2024 11:04] jecikzerrikan
+Thought so, I reverified it, I guess I need to wait till next results to figure out if it worked 😉
+
+{Reactions}
+👍 
+
+[04/11/2024 12:23] 0xjuaan
+for me it only shows how many h/m, not which reports specificaly
+
+
+[04/11/2024 15:00] mike_bello90
+congrats to everyone 🔥 🔥
+
+
+[04/11/2024 15:21] thank_you_
+my bad. i didn't know they updated the backstage criteria.
+
+
+[04/11/2024 21:53] inallhonesty_
+For the exact stuff we need to wait for the report
+
+
+[04/12/2024 17:00] tigerfrake
+Finally got my `backstage` role from this:chefskiss:
+
+{Reactions}
+👏 (8) 
+
+[04/12/2024 18:25] daniel526
+Congratulations buddy 🎉
+
+
+[04/12/2024 18:31] tigerfrake
+Thanks G. Baby steps!
+
+{Reactions}
+🫡 
+
+[04/15/2024 17:07] xyzbtchunt
+this reward been sent?
+
+
+[04/15/2024 17:26] thank_you_
+Any idea if there will be a mitigation review?
+
+
+[04/15/2024 19:47] jpr15
+no 😩
+
+
+[04/16/2024 06:22] oceansky
+received mine 3 hours ago
+
+{Reactions}
+👍 
+
+[04/16/2024 17:03] olanre_waju
+@stockmart no card for revert?
+
+
+[04/16/2024 17:09] stockmart
+There will be, but since I do them manually I have to grind through the backlog at the moment. Will likely have them done by the end of the week!
+
+{Reactions}
+🫡 (2) 
+
+[04/16/2024 17:11] 0xsorrynotsorry
+They´re really awesome!
+Thank you so much for your precious work 🙏 🫡
+
+{Reactions}
+❤️ 
+
+[04/16/2024 17:39] olanre_waju
+Weldone :hi5:
+
+{Reactions}
+hi5 
+
+[04/17/2024 16:46] stockmart
+Started a thread.
+
+
+[04/25/2024 02:15] itsmetechjay
+ℹ️ This channel is pending archive.   As a result, any private threads will be permanently deleted on Friday, 03 May 2024. Please make sure to grab anything you might need before then.
+
+
+[05/03/2024 15:25] itsmetechjay
+ℹ️ Reminder: this channel will be deleted in 24 hours.
+
+
+==============================================================
+Exported 433 message(s)
+==============================================================
